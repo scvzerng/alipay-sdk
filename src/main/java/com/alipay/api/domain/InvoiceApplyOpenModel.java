@@ -1,0 +1,333 @@
+package com.alipay.api.domain;
+
+import java.util.List;
+
+import com.alipay.api.AlipayObject;
+import com.alipay.api.internal.mapping.ApiField;
+import com.alipay.api.internal.mapping.ApiListField;
+
+/**
+ * 发票申请模型
+ *
+ * @author auto create
+ * @since 1.0, 2017-04-05 20:14:45
+ */
+public class InvoiceApplyOpenModel extends AlipayObject {
+
+	private static final long serialVersionUID = 4117915131479488589L;
+
+	/**
+	 * 复核人
+	 */
+	@ApiField("checker")
+	private String checker;
+
+	/**
+	 * 操作员
+	 */
+	@ApiField("clerk")
+	private String clerk;
+
+	/**
+	 * 不含税金额
+	 */
+	@ApiField("ex_tax_amount")
+	private String exTaxAmount;
+
+	/**
+	 * 发票金额（加税合计）
+	 */
+	@ApiField("invoice_amount")
+	private String invoiceAmount;
+
+	/**
+	 * 发票内容项
+	 */
+	@ApiListField("invoice_content")
+	@ApiField("invoice_item_apply_open_model")
+	private List<InvoiceItemApplyOpenModel> invoiceContent;
+
+	/**
+	 * 发票类型：
+增值税普通电子发票(PLAIN)
+	 */
+	@ApiField("invoice_kind")
+	private String invoiceKind;
+
+	/**
+	 * 发票备注
+	 */
+	@ApiField("invoice_memo")
+	private String invoiceMemo;
+
+	/**
+	 * 发票抬头
+	 */
+	@ApiField("invoice_title")
+	private InvoiceTitleApplyOpenModel invoiceTitle;
+
+	/**
+	 * 仅用于冲红，对应冲红对应的原始蓝票的发票代码
+	 */
+	@ApiField("ori_blue_inv_code")
+	private String oriBlueInvCode;
+
+	/**
+	 * 仅用于冲红，仅用于冲红，对应冲红对应的原始蓝票的发票号码
+	 */
+	@ApiField("ori_blue_inv_no")
+	private String oriBlueInvNo;
+
+	/**
+	 * 发起方生成的开票申请唯一id，要求发起方全局唯一，支付宝依据其进行幂等控制。
+	 */
+	@ApiField("out_apply_id")
+	private String outApplyId;
+
+	/**
+	 * 申请开票对应的商户交易流水号，该流水号必须保证在同商户范围内全局唯一。
+	 */
+	@ApiField("out_trade_no")
+	private String outTradeNo;
+
+	/**
+	 * 收款人
+	 */
+	@ApiField("payee")
+	private String payee;
+
+	/**
+	 * 销售方地址
+	 */
+	@ApiField("payee_address")
+	private String payeeAddress;
+
+	/**
+	 * 销售方开户账户
+	 */
+	@ApiField("payee_bank_account")
+	private String payeeBankAccount;
+
+	/**
+	 * 销售方开户行
+	 */
+	@ApiField("payee_bank_name")
+	private String payeeBankName;
+
+	/**
+	 * 销售方名称，对应于销售方纳税人识别号的名称
+	 */
+	@ApiField("payee_register_name")
+	private String payeeRegisterName;
+
+	/**
+	 * 销售方纳税人识别号
+	 */
+	@ApiField("payee_register_no")
+	private String payeeRegisterNo;
+
+	/**
+	 * 销售方电话
+	 */
+	@ApiField("payee_tel")
+	private String payeeTel;
+
+	/**
+	 * 购买方联系方式-邮箱
+	 */
+	@ApiField("payer_contect_email")
+	private String payerContectEmail;
+
+	/**
+	 * 购买方联系方式
+	 */
+	@ApiField("payer_contect_mobile")
+	private String payerContectMobile;
+
+	/**
+	 * 合计税额
+	 */
+	@ApiField("sum_tax_amount")
+	private String sumTaxAmount;
+
+	/**
+	 * 商户在税控服务开通后，税控厂商会向商户分配秘钥并提供token的生成方法，商户或ISV利用该方法生成token以获得此次调用的操作权限。
+	 */
+	@ApiField("tax_token")
+	private String taxToken;
+
+	/**
+	 * 交易发生时间
+	 */
+	@ApiField("trade_date")
+	private String tradeDate;
+
+	public String getChecker() {
+		return this.checker;
+	}
+	public void setChecker(String checker) {
+		this.checker = checker;
+	}
+
+	public String getClerk() {
+		return this.clerk;
+	}
+	public void setClerk(String clerk) {
+		this.clerk = clerk;
+	}
+
+	public String getExTaxAmount() {
+		return this.exTaxAmount;
+	}
+	public void setExTaxAmount(String exTaxAmount) {
+		this.exTaxAmount = exTaxAmount;
+	}
+
+	public String getInvoiceAmount() {
+		return this.invoiceAmount;
+	}
+	public void setInvoiceAmount(String invoiceAmount) {
+		this.invoiceAmount = invoiceAmount;
+	}
+
+	public List<InvoiceItemApplyOpenModel> getInvoiceContent() {
+		return this.invoiceContent;
+	}
+	public void setInvoiceContent(List<InvoiceItemApplyOpenModel> invoiceContent) {
+		this.invoiceContent = invoiceContent;
+	}
+
+	public String getInvoiceKind() {
+		return this.invoiceKind;
+	}
+	public void setInvoiceKind(String invoiceKind) {
+		this.invoiceKind = invoiceKind;
+	}
+
+	public String getInvoiceMemo() {
+		return this.invoiceMemo;
+	}
+	public void setInvoiceMemo(String invoiceMemo) {
+		this.invoiceMemo = invoiceMemo;
+	}
+
+	public InvoiceTitleApplyOpenModel getInvoiceTitle() {
+		return this.invoiceTitle;
+	}
+	public void setInvoiceTitle(InvoiceTitleApplyOpenModel invoiceTitle) {
+		this.invoiceTitle = invoiceTitle;
+	}
+
+	public String getOriBlueInvCode() {
+		return this.oriBlueInvCode;
+	}
+	public void setOriBlueInvCode(String oriBlueInvCode) {
+		this.oriBlueInvCode = oriBlueInvCode;
+	}
+
+	public String getOriBlueInvNo() {
+		return this.oriBlueInvNo;
+	}
+	public void setOriBlueInvNo(String oriBlueInvNo) {
+		this.oriBlueInvNo = oriBlueInvNo;
+	}
+
+	public String getOutApplyId() {
+		return this.outApplyId;
+	}
+	public void setOutApplyId(String outApplyId) {
+		this.outApplyId = outApplyId;
+	}
+
+	public String getOutTradeNo() {
+		return this.outTradeNo;
+	}
+	public void setOutTradeNo(String outTradeNo) {
+		this.outTradeNo = outTradeNo;
+	}
+
+	public String getPayee() {
+		return this.payee;
+	}
+	public void setPayee(String payee) {
+		this.payee = payee;
+	}
+
+	public String getPayeeAddress() {
+		return this.payeeAddress;
+	}
+	public void setPayeeAddress(String payeeAddress) {
+		this.payeeAddress = payeeAddress;
+	}
+
+	public String getPayeeBankAccount() {
+		return this.payeeBankAccount;
+	}
+	public void setPayeeBankAccount(String payeeBankAccount) {
+		this.payeeBankAccount = payeeBankAccount;
+	}
+
+	public String getPayeeBankName() {
+		return this.payeeBankName;
+	}
+	public void setPayeeBankName(String payeeBankName) {
+		this.payeeBankName = payeeBankName;
+	}
+
+	public String getPayeeRegisterName() {
+		return this.payeeRegisterName;
+	}
+	public void setPayeeRegisterName(String payeeRegisterName) {
+		this.payeeRegisterName = payeeRegisterName;
+	}
+
+	public String getPayeeRegisterNo() {
+		return this.payeeRegisterNo;
+	}
+	public void setPayeeRegisterNo(String payeeRegisterNo) {
+		this.payeeRegisterNo = payeeRegisterNo;
+	}
+
+	public String getPayeeTel() {
+		return this.payeeTel;
+	}
+	public void setPayeeTel(String payeeTel) {
+		this.payeeTel = payeeTel;
+	}
+
+	public String getPayerContectEmail() {
+		return this.payerContectEmail;
+	}
+	public void setPayerContectEmail(String payerContectEmail) {
+		this.payerContectEmail = payerContectEmail;
+	}
+
+	public String getPayerContectMobile() {
+		return this.payerContectMobile;
+	}
+	public void setPayerContectMobile(String payerContectMobile) {
+		this.payerContectMobile = payerContectMobile;
+	}
+
+	public String getSumTaxAmount() {
+		return this.sumTaxAmount;
+	}
+	public void setSumTaxAmount(String sumTaxAmount) {
+		this.sumTaxAmount = sumTaxAmount;
+	}
+
+	public String getTaxToken() {
+		return this.taxToken;
+	}
+	public void setTaxToken(String taxToken) {
+		this.taxToken = taxToken;
+	}
+
+	public String getTradeDate() {
+		return this.tradeDate;
+	}
+	public void setTradeDate(String tradeDate) {
+		this.tradeDate = tradeDate;
+	}
+
+}
