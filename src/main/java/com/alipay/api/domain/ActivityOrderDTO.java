@@ -5,6 +5,8 @@ import java.util.List;
 import com.alipay.api.AlipayObject;
 import com.alipay.api.internal.mapping.ApiField;
 import com.alipay.api.internal.mapping.ApiListField;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 /**
  * 活动各阶段订单模型
@@ -12,6 +14,7 @@ import com.alipay.api.internal.mapping.ApiListField;
  * @author auto create
  * @since 1.0, 2017-01-18 15:50:35
  */
+@ApiModel
 public class ActivityOrderDTO extends AlipayObject {
 
 	private static final long serialVersionUID = 1768493889178353284L;
@@ -21,42 +24,49 @@ public class ActivityOrderDTO extends AlipayObject {
 	 */
 	@ApiListField("activity_audit_list")
 	@ApiField("activity_audit_d_t_o")
+	@ApiModelProperty(notes = "工单中的审核信息")
 	private List<ActivityAuditDTO> activityAuditList;
 
 	/**
 	 * INIT:初始化;AUDITING:审核中;REJECT:审核驳回;PASS:审核通过;CANCEL:审核撤销;FAIL:审核失败
 	 */
 	@ApiField("audit_status")
+	@ApiModelProperty(notes = "INIT:初始化;AUDITING:审核中;REJECT:审核驳回;PASS:审核通过;CANCEL:审核撤销;FAIL:审核失败")
 	private String auditStatus;
 
 	/**
 	 * 活动各阶段操作发起人id，比如order_type=CAMPAIGN_CREATE_ORDER,那么这个id就是活动创建人的id。
 	 */
 	@ApiField("creator_id")
+	@ApiModelProperty(notes = "活动各阶段操作发起人id，比如order_type=CAMPAIGN_CREATE_ORDER,那么这个id就是活动创建人的id。")
 	private String creatorId;
 
 	/**
 	 * 活动工单创建人类型，PROVIDER:服务商;PROVIDER_STAFF:服务商员工;SALES:BD人员;MER:商户
 	 */
 	@ApiField("creator_type")
+	@ApiModelProperty(notes = " 活动工单创建人类型，PROVIDER:服务商;PROVIDER_STAFF:服务商员工;SALES:BD人员;MER:商户")
 	private String creatorType;
 
 	/**
 	 * 订单号
 	 */
 	@ApiField("order_id")
+	@ApiModelProperty(notes = "订单号")
 	private String orderId;
 
 	/**
 	 * INIT:初始化;DOING:处理中;SUCCESS:成功;FAIL:失败
 	 */
 	@ApiField("order_status")
+	@ApiModelProperty(notes = "INIT:初始化;DOING:处理中;SUCCESS:成功;FAIL:失败")
 	private String orderStatus;
 
 	/**
 	 * CAMPAIGN_CREATE_ORDER:创建工单;CAMPAIGN_ENABLE_ORDER:生效工单;CAMPAIGN_START_ORDER:启动工单;CAMPAIGN_CLOSE_ORDER:关闭工单;CAMPAIGN_FINISH_ORDER:结束工单;CAMPAIGN_DELETE_ORDER:删除工单;CAMPAIGN_MODIFY_ORDER:修改工单
 	 */
 	@ApiField("order_type")
+	@ApiModelProperty(notes = "CAMPAIGN_CREATE_ORDER:创建工单;CAMPAIGN_ENABLE_ORDER:生效工单;CAMPAIGN_START_ORDER:启动工单;CAMPAIGN_CLOSE_ORDER:关闭工单;CAMPAIGN_FINISH_ORDER:结束工单;CAMPAIGN_DELETE_ORDER:删除工单;CAMPAIGN_MODIFY_ORDER:修改工单")
 	private String orderType;
 
 	public List<ActivityAuditDTO> getActivityAuditList() {

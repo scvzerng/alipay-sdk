@@ -6,6 +6,7 @@ import com.alipay.api.internal.mapping.ApiListField;
 import com.alipay.api.domain.CampBaseDto;
 
 import com.alipay.api.AlipayResponse;
+import io.swagger.annotations.ApiModel;
 
 /**
  * ALIPAY API: koubei.marketing.campaign.activity.batchquery response.
@@ -13,11 +14,12 @@ import com.alipay.api.AlipayResponse;
  * @author auto create
  * @since 1.0, 2016-12-27 19:35:52
  */
+@ApiModel
 public class KoubeiMarketingCampaignActivityBatchqueryResponse extends AlipayResponse {
 
 	private static final long serialVersionUID = 2528186615343498257L;
 
-	/** 
+	/**
 	 * 活动列表
 	 */
 	@ApiListField("camp_sets")
