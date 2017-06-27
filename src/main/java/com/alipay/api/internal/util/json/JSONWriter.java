@@ -18,10 +18,10 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Stack;
 import java.util.TimeZone;
-
 import com.alipay.api.AlipayConstants;
 import com.alipay.api.internal.mapping.ApiField;
 import com.alipay.api.internal.mapping.ApiListField;
+import com.alipay.api.internal.mapping.DateFormatter;
 import com.alipay.api.internal.util.AlipayLogger;
 
 public class JSONWriter {
@@ -71,10 +71,12 @@ public class JSONWriter {
     }
 
     private void value(Object object) {
-        value(object, false);
+        value(object,null, false);
     }
-
     private void value(Object object, boolean isApiModel) {
+        value(object,null, isApiModel);
+    }
+    private void value(Object object, String formatter, boolean isApiModel) {
         if (object == null || cyclic(object)) {
             add(null);
         } else {
@@ -85,7 +87,7 @@ public class JSONWriter {
                 bool(((Boolean) object).booleanValue());
             else if (object instanceof Number)
                 add(object);
-            else if (object instanceof String)
+            else if (object instanceof String||object instanceof Enum)
                 string(object);
             else if (object instanceof Character)
                 string(object);
@@ -98,7 +100,7 @@ public class JSONWriter {
             else if (object instanceof Collection<?>)
                 array(((Collection<?>) object).iterator(), isApiModel);
             else if (object instanceof Date)
-                date((Date) object);
+                date((Date) object,formatter);
             else {
                 if (isApiModel)
                     model(object);
@@ -118,7 +120,6 @@ public class JSONWriter {
         }
         return false;
     }
-
     private void bean(Object object) {
         add("{");
         BeanInfo info;
@@ -173,6 +174,7 @@ public class JSONWriter {
                 Field field = ff[i];
                 // 获取注解
                 ApiField jsonField = field.getAnnotation(ApiField.class);
+                DateFormatter dateFormatter =  field.getAnnotation(DateFormatter.class);
                 ApiListField listField = field.getAnnotation(ApiListField.class);
                 // 优先处理列表类型注解,非列表类型才处理字段注解
                 if (listField != null) {
@@ -199,7 +201,7 @@ public class JSONWriter {
                         continue;
                     if (addedSomething)
                         add(',');
-                    add(jsonField.value(), value, true);
+                    add(jsonField.value(), value,dateFormatter==null?null:dateFormatter.value(), true);
                     addedSomething = true;
                 }
             }
@@ -223,8 +225,15 @@ public class JSONWriter {
         add('"');
         add(name);
         add("\":");
-        value(value, isApiModel);
+        value(value,null, isApiModel);
     }
+    private void add(String name, Object value, String format,boolean isApiModel) {
+        add('"');
+        add(name);
+        add("\":");
+        value(value,format, isApiModel);
+    }
+
 
     private void map(Map<?, ?> map) {
         add("{");
@@ -247,7 +256,7 @@ public class JSONWriter {
     private void array(Iterator<?> it, boolean isApiModel) {
         add("[");
         while (it.hasNext()) {
-            value(it.next(), isApiModel);
+            value(it.next(),null, isApiModel);
             if (it.hasNext())
                 add(",");
         }
@@ -262,7 +271,7 @@ public class JSONWriter {
         add("[");
         int length = Array.getLength(object);
         for (int i = 0; i < length; ++i) {
-            value(Array.get(object, i), isApiModel);
+            value(Array.get(object, i),null, isApiModel);
             if (i < length - 1)
                 add(',');
         }
@@ -273,7 +282,8 @@ public class JSONWriter {
         add(b ? "true" : "false");
     }
 
-    private void date(Date date) {
+    private void date(Date date,String dateFormat) {
+        if(dateFormat!=null) this.format = new SimpleDateFormat(dateFormat);
         if (this.format == null) {
             this.format = new SimpleDateFormat(AlipayConstants.DATE_TIME_FORMAT);
             this.format.setTimeZone(TimeZone.getTimeZone(AlipayConstants.DATE_TIMEZONE));

@@ -3,6 +3,8 @@ package com.alipay.api.domain;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.alipay.api.AlipayObject;
 import com.alipay.api.internal.mapping.ApiField;
+import com.alipay.api.internal.mapping.ApiListField;
+import com.alipay.api.internal.mapping.DateFormatter;
 import io.swagger.annotations.*;
 
 import javax.validation.Validation;
@@ -28,7 +30,8 @@ public class KoubeiMarketingDataIndicatorQueryModel extends AlipayObject {
      * 开始日期,格式:yyyyMMdd
      */
     @ApiModelProperty(notes = "开始日期,格式:yyyyMMdd")
-    @JSONField(name = "begin_date",format = "yyyyMMdd")
+    @ApiField( "begin_date")
+    @DateFormatter("yyyyMMdd")
     @NotNull(message = "开始日期不能为空")
     private Date beginDate;
 
@@ -44,7 +47,7 @@ public class KoubeiMarketingDataIndicatorQueryModel extends AlipayObject {
      * 8，ConponsQueryByStore 门店券数据查询
      */
     @ApiModelProperty(notes = "业务类型，可选值有六个1，MemberQuery商户会员数据查询2，MemberQueryByStore门店会员数据查询3，TradeQuery商户交易数据查询4，TradeQueryByStore门店交易数据查询5，CampaignQuery商户活动数据查询6，CampaignQueryByStore门店活动数据查询7，ConponsQuery商户券数据查询8，ConponsQueryByStore门店券数据查询")
-    @JSONField(name = "biz_type")
+    @ApiField( "biz_type")
     @NotNull(message = "业务类型不能为空")
     private BizType bizType;
 
@@ -52,7 +55,8 @@ public class KoubeiMarketingDataIndicatorQueryModel extends AlipayObject {
      * 结束日期 格式:yyyyMMdd
      */
     @ApiModelProperty(notes = "结束日期格式:yyyyMMdd")
-    @JSONField(name = "end_date",format = "yyyyMMdd")
+    @ApiField( "end_date")
+    @DateFormatter("yyyyMMdd")
     @NotNull(message = "结束日期不能为空")
     private Date endDate;
 
@@ -64,8 +68,8 @@ public class KoubeiMarketingDataIndicatorQueryModel extends AlipayObject {
      * 注意：
      * 注意：这个是JSON数组，必须以{开头，以}结尾，{}外层不能加双引号"",正确案例{"camp_id":"10000000000000000000000000000000","sort_field":"total_user_cnt","sort_type":"ASC","store_Ids":"20131133131,2031313"}，错误案例："{"camp_id":"10000000000000000000000000000000","sort_field":"total_user_cnt","sort_type":"ASC","store_Ids":"20131133131,2031313"}"
      */
-    @ApiModelProperty(name = "拓展信息")
-    @JSONField(name = "ext_info")
+    @ApiModelProperty( "拓展信息")
+    @ApiField( "ext_info")
     private ExtInfo extInfo;
 
 
@@ -73,14 +77,14 @@ public class KoubeiMarketingDataIndicatorQueryModel extends AlipayObject {
      * 当前页数，默认为1
      */
     @ApiModelProperty(notes = "当前页数，默认为1")
-    @JSONField(name = "page_num")
+    @ApiField( "page_num")
     private Integer pageNum;
 
     /**
      * 每页记录数,不能超过50，默认为20
      */
     @ApiModelProperty(notes = "每页记录数,不能超过50，默认为20")
-    @JSONField(name = "page_size")
+    @ApiField( "page_size")
     private Integer pageSize;
 
     /**
@@ -90,22 +94,23 @@ public class KoubeiMarketingDataIndicatorQueryModel extends AlipayObject {
         /**
          * 活动ID
          */@ApiModelProperty(notes = "活动ID")
-        @JSONField(name = "camp_id")
+        @ApiField( "camp_id")
         private String campId;
         /**
          * 排序字段
          */@ApiModelProperty(notes = "排序字段")
-        @JSONField(name = "sort_field")
+        @ApiField( "sort_field")
         private String sortField;
         /**
          * 排序类型
          */@ApiModelProperty(notes = "排序类型")
-        @JSONField(name = "sort_type")
+        @ApiField( "sort_type")
         private Order sortType;
         /**
          * 门店ID列表
          */@ApiModelProperty(notes = "门店ID列表")
-        @JSONField(name = "store_ids")
+        @ApiListField("store_ids")
+        @ApiField("string")
         private List<String> storeIds;
 
         public String getCampId() {
