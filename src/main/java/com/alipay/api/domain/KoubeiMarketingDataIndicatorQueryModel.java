@@ -5,6 +5,7 @@ import com.alipay.api.AlipayObject;
 import com.alipay.api.internal.mapping.ApiField;
 import com.alipay.api.internal.mapping.ApiListField;
 import com.alipay.api.internal.mapping.DateFormatter;
+import com.yazuo.xiaoya.common.annotation.validate.EnumCheck;
 import io.swagger.annotations.*;
 
 import javax.validation.Validation;
@@ -48,8 +49,8 @@ public class KoubeiMarketingDataIndicatorQueryModel extends AlipayObject {
      */
     @ApiModelProperty(notes = "业务类型，可选值有六个1，MemberQuery商户会员数据查询2，MemberQueryByStore门店会员数据查询3，TradeQuery商户交易数据查询4，TradeQueryByStore门店交易数据查询5，CampaignQuery商户活动数据查询6，CampaignQueryByStore门店活动数据查询7，ConponsQuery商户券数据查询8，ConponsQueryByStore门店券数据查询")
     @ApiField( "biz_type")
-    @NotNull(message = "业务类型不能为空")
-    private BizType bizType;
+    @EnumCheck(enums = {"MemberQuery","MemberQueryByStore","TradeQuery","TradeQueryByStore","CampaignQuery","CampaignQueryByStore","ConponsQuery","ConponsQueryByStore"})
+    private String bizType;
 
     /**
      * 结束日期 格式:yyyyMMdd
@@ -156,11 +157,11 @@ public class KoubeiMarketingDataIndicatorQueryModel extends AlipayObject {
     }
 
 
-    public BizType getBizType() {
+    public String getBizType() {
         return bizType;
     }
 
-    public void setBizType(BizType bizType) {
+    public void setBizType(String bizType) {
         this.bizType = bizType;
     }
 
