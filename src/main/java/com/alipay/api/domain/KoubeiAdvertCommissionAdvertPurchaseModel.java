@@ -5,6 +5,9 @@ import java.util.List;
 import com.alipay.api.AlipayObject;
 import com.alipay.api.internal.mapping.ApiField;
 import com.alipay.api.internal.mapping.ApiListField;
+import org.hibernate.validator.constraints.NotBlank;
+
+import javax.validation.constraints.NotNull;
 
 /**
  * 广告推广用于参与接口
@@ -26,6 +29,7 @@ public class KoubeiAdvertCommissionAdvertPurchaseModel extends AlipayObject {
 	 * 外部用户唯一标识(用于生成校验码，只有白名单ISV才可不填)
 	 */
 	@ApiField("out_unique_id")
+	@NotBlank
 	private String outUniqueId;
 
 	/**
@@ -62,6 +66,7 @@ trigger_identify_type=advert所有值都必须是广告ID
 	 */
 	@ApiListField("trigger_identifies")
 	@ApiField("string")
+	@NotNull
 	private List<String> triggerIdentifies;
 
 	/**
@@ -69,6 +74,7 @@ trigger_identify_type=advert所有值都必须是广告ID
 advert-广告ID
 	 */
 	@ApiField("trigger_identify_type")
+	@NotBlank
 	private String triggerIdentifyType;
 
 	/**
@@ -77,6 +83,7 @@ user_identify_type=phone-值必须是用户手机号
 user_identify_type=logon_id-值必须是用户支付宝登录账号
 	 */
 	@ApiField("user_identify")
+	@NotBlank
 	private String userIdentify;
 
 	/**
@@ -86,6 +93,7 @@ logon_id-支付宝登录账号
 user_id - 支付宝账户ID
 	 */
 	@ApiField("user_identify_type")
+	@NotBlank
 	private String userIdentifyType;
 
 	public String getChannelId() {
