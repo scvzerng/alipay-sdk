@@ -110,9 +110,8 @@ public class KoubeiMarketingDataIndicatorQueryModel extends AlipayObject {
         /**
          * 门店ID列表
          */@ApiModelProperty(notes = "门店ID列表")
-        @ApiListField("store_ids")
-        @ApiField("string")
-        private List<String> storeIds;
+        @ApiField("store_ids")
+        private String storeIds;
 
         public String getCampId() {
             return campId;
@@ -138,11 +137,11 @@ public class KoubeiMarketingDataIndicatorQueryModel extends AlipayObject {
             this.sortType = sortType;
         }
 
-        public List<String> getStoreIds() {
+        public String getStoreIds() {
             return storeIds;
         }
 
-        public void setStoreIds(List<String> storeIds) {
+        public void setStoreIds(String storeIds) {
             this.storeIds = storeIds;
         }
     }
