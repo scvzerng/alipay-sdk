@@ -53,4 +53,6 @@ public class KoubeiMarketingDataTradeHabbitQueryModel extends AlipayObject {
 	public void setStoreIds(List<String> storeIds) {
 		this.storeIds = storeIds;
 	}
+
+
 }
