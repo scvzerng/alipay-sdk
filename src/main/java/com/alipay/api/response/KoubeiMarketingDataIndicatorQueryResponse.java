@@ -36,15 +36,16 @@ public class KoubeiMarketingDataIndicatorQueryResponse extends AlipayResponse {
 	}
 
 	/**
-	 * 此方法入参 为KoubeiMarketingDataIndicatorQueryModel.BizType 枚举内中的枚举对应的class传入
+	 * 使用方法 可直接用返回类型的对应数据接收 接受类型 为KoubeiMarketingDataIndicatorQueryModel下的
+	 * 内部类
 	 * 例如
-	 * 	getIndicatorInfos（KoubeiMarketingDataIndicatorQueryModel.BizType.CampaignQuery.getClazz()）
+	 * 	KoubeiMarketingDataIndicatorQueryModel.MemberQueryModel mqm = new KoubeiMarketingDataIndicatorQueryResponse().getIndicatorInfos()
 	 * 返回值为对应class的list
 	 * @param t
 	 * @param <T>
 	 * @return	List<T>
 	 */
-	public  <T> List<T> getIndicatorInfos(T t) {
+	public  <T> List<T> getIndicatorInfos() {
 		return JSON.parseObject(this.indicatorInfos,new TypeReference<List<T>>(){});
 
 	}
