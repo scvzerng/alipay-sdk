@@ -1,8 +1,13 @@
 package com.alipay.api.response;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.TypeReference;
+import com.alipay.api.domain.KoubeiMarketingDataIndicatorQueryModel;
 import com.alipay.api.internal.mapping.ApiField;
 
 import com.alipay.api.AlipayResponse;
+
+import java.util.List;
 
 /**
  * ALIPAY API: koubei.marketing.data.indicator.query response.
@@ -29,8 +34,19 @@ public class KoubeiMarketingDataIndicatorQueryResponse extends AlipayResponse {
 	public void setIndicatorInfos(String indicatorInfos) {
 		this.indicatorInfos = indicatorInfos;
 	}
-	public String getIndicatorInfos( ) {
-		return this.indicatorInfos;
+
+	/**
+	 * 此方法入参 为KoubeiMarketingDataIndicatorQueryModel.BizType 枚举内中的枚举对应的class传入
+	 * 例如
+	 * 	getIndicatorInfos（KoubeiMarketingDataIndicatorQueryModel.BizType.CampaignQuery.getClazz()）
+	 * 返回值为对应class的list
+	 * @param t
+	 * @param <T>
+	 * @return	List<T>
+	 */
+	public  <T> List<T> getIndicatorInfos(T t) {
+		return JSON.parseObject(this.indicatorInfos,new TypeReference<List<T>>(){});
+
 	}
 
 	public void setTotalSize(String totalSize) {

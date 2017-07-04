@@ -2,6 +2,13 @@ package com.alipay.api.domain;
 
 import com.alipay.api.AlipayObject;
 import com.alipay.api.internal.mapping.ApiField;
+import com.alipay.api.internal.mapping.ApiListField;
+import com.alipay.api.internal.mapping.DateFormatter;
+import io.swagger.annotations.*;
+
+import javax.validation.constraints.NotNull;
+import java.util.Date;
+import java.util.List;
 
 /**
  * 商户会员交易习惯查询接口
@@ -9,35 +16,41 @@ import com.alipay.api.internal.mapping.ApiField;
  * @author auto create
  * @since 1.0, 2016-11-25 10:43:58
  */
+@ApiModel(description = " 商户会员交易习惯查询接口")
 public class KoubeiMarketingDataTradeHabbitQueryModel extends AlipayObject {
 
 	private static final long serialVersionUID = 6544681434163256534L;
 
 	/**
-	 * 业务日期
-	 */
+	 * 业务日期 格式:yyyyMMdd
+	 */@ApiModelProperty(notes = " 业务日期 格式:yyyyMMdd")
 	@ApiField("biz_date")
-	private String bizDate;
+	@DateFormatter("yyyyMMdd")
+	@NotNull(message = "开始日期不能为空")
+	private Date bizDate;
 
 	/**
-	 * 门店列表,门店用逗号分割，最多支持10个门店。
+	 * 门店列表,最多支持10个门店。
 不填时,则为商户维度汇总数据
 	 */
-	@ApiField("store_ids")
-	private String storeIds;
+	@ApiModelProperty(notes = " 门店列表,最多支持10个门店。不填时,则为商户维度汇总数据")
+	@ApiListField("store_ids")
+	@ApiField("string")
+	private List<String> storeIds;
 
-	public String getBizDate() {
-		return this.bizDate;
+	public Date getBizDate() {
+		return bizDate;
 	}
-	public void setBizDate(String bizDate) {
+
+	public void setBizDate(Date bizDate) {
 		this.bizDate = bizDate;
 	}
 
-	public String getStoreIds() {
-		return this.storeIds;
-	}
-	public void setStoreIds(String storeIds) {
-		this.storeIds = storeIds;
+	public List<String> getStoreIds() {
+		return storeIds;
 	}
 
+	public void setStoreIds(List<String> storeIds) {
+		this.storeIds = storeIds;
+	}
 }

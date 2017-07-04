@@ -1,5 +1,7 @@
 package com.alipay.api;
 
+import io.swagger.annotations.ApiModelProperty;
+
 import java.io.Serializable;
 
 /**
