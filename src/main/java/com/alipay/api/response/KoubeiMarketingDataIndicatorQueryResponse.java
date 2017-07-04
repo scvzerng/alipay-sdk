@@ -51,7 +51,7 @@ public class KoubeiMarketingDataIndicatorQueryResponse extends AlipayResponse {
 	 * @return	List<T>
 	 */
 	public  <T> List<T> getIndicatorInfos(KoubeiMarketingDataIndicatorQueryModel.BizType bizType) {
-		return (List<T>) JSON.parseArray(this.indicatorInfos,bizType.getClass());
+		return (List<T>) JSON.parseArray(this.indicatorInfos,bizType.getClazz());
 
 	}
 

@@ -9,6 +9,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import com.alibaba.fastjson.JSON;
 import com.alipay.api.AlipayApiException;
 import com.alipay.api.AlipayConstants;
 import com.alipay.api.AlipayRequest;
@@ -83,6 +84,9 @@ public class JsonConverter implements Converter {
                 List<Object> listObjs = null;
 
                 Object listTmp = json.get(listName);
+                if(listTmp instanceof String){
+                    listTmp = JSON.parseArray((String) listTmp);
+                }
                 if (listTmp instanceof Map<?, ?>) {
                     Map<?, ?> jsonMap = (Map<?, ?>) listTmp;
                     Object itemTmp = jsonMap.get(itemName);

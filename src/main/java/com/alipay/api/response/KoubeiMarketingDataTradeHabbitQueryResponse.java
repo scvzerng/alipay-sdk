@@ -6,6 +6,7 @@ import com.alibaba.fastjson.annotation.JSONField;
 import com.alipay.api.internal.mapping.ApiField;
 
 import com.alipay.api.AlipayResponse;
+import com.alipay.api.internal.mapping.ApiListField;
 import com.alipay.api.internal.mapping.DateFormatter;
 import io.swagger.annotations.*;
 
@@ -39,89 +40,91 @@ public class KoubeiMarketingDataTradeHabbitQueryResponse extends AlipayResponse 
 注意：出参中还包含30天/60天/90天的类似指标，篇幅有限不一一列举
 	 */
 	@ApiModelProperty(notes = " biz_date: 业务日期  格式:yyyyMMddpartner_industry_type:商户行业标识（轻餐or正餐）shop_id: 门店idshop_name: 门店名称trade_again_ratio_7d: （近7天）复购率trade_again_ratio_active_7d: （近7天）复购率（口碑活跃用户）trade_user_cnt_7d: （近7天）交易会员数trade_user_cnt_active_7d: （近7天）交易活跃会员数（口碑活跃用户贡献）zdj_order_amt_7d: （近7天）桌单价（订单金额）(单位:分)zdj_service_amt_7d: （近7天）桌单价（实收金额）(单位:分)zdj_service_amt_distribution_7d: （近7天）桌单价（实收金额）段分布（示例：0-15:0.2799,15-20:0.1775,20-25:0.1058,25-30:0.0956,30-35:0.0648,35-40:0.0751,40-45:0.0444,45-50:0.0137,50-55:0.0171,55及以上:0.1263 意思是消费0-15元的比例占消费总人数的0.2799）注意：出参中还包含30天/60天/90天的类似指标，篇幅有限不一一列举")
-	@ApiField("trade_habit_info")
-	private List<TradeHabitInfo> tradeHabitInfos;
 
-	public List<TradeHabitInfo> getTradeHabitInfos() {
-		return tradeHabitInfos;
+	@ApiListField("trade_habit_info")
+	@ApiField("trade_habit")
+	private List<TradeHabit> tradeHabitInfo;
+
+	public List<TradeHabit> getTradeHabitInfo() {
+		return tradeHabitInfo;
 	}
 
-	public void setTradeHabitInfos(List<TradeHabitInfo> tradeHabitInfos) {
-		this.tradeHabitInfos = tradeHabitInfos;
+	public void setTradeHabitInfo(List<TradeHabit> tradeHabitInfo) {
+		this.tradeHabitInfo = tradeHabitInfo;
 	}
 
-	public static class TradeHabitInfo implements Serializable {
+	public static class TradeHabit implements Serializable {
 
-		@JSONField(name = "biz_date")
+		@ApiField("biz_date")
 		@DateFormatter("yyyyMMdd")
 		private Date bizDate;// 业务日期 格式:yyyyMMdd
-		@JSONField(name = "partner_industry_type")
+		@ApiField("partner_industry_type")
 		private String partnerIndustryType;// 商户行业标识（轻餐or正餐）
-		@JSONField(name = "shop_id")
+		@ApiField("shop_id")
 		private String shopId;// 门店id
-		@JSONField(name = "shop_name")
+		@ApiField("shop_name")
 		private String shopName;// 门店名称
-		@JSONField(name = "trade_again_ratio_7d")
+		@ApiField("trade_again_ratio_7d")
 		private Double tradeAgainRatio7d;// （近7天）复购率
-		@JSONField(name = "trade_again_ratio_active_7d")
+		@ApiField("trade_again_ratio_active_7d")
 		private Double tradeAgainRatioActive7d;// （近7天）复购率（口碑活跃用户）
-		@JSONField(name = "trade_user_cnt_7d")
+		@ApiField("trade_user_cnt_7d")
 		private Integer tradeUserCnt7d;// （近7天）交易会员数
-		@JSONField(name = "trade_user_cnt_active_7d")
+		@ApiField("trade_user_cnt_active_7d")
 		private Integer tradeUserCntActive7d;// （近7天）交易活跃会员数（口碑活跃用户贡献）
-		@JSONField(name = "zdj_order_amt_7d")
+		@ApiField("zdj_order_amt_7d")
 		private BigDecimal zdjOrderAmt7d;// （近7天）笔单价（订单金额）(单位:分)
-		@JSONField(name = "zdj_service_amt_7d")
+		@ApiField("zdj_service_amt_7d")
 		private BigDecimal zdjServiceAmt7d;// （近7天）笔单价（实收金额）(单位:分)
-		@JSONField(name = "zdj_service_amt_distribution_7d")
+		@ApiField("zdj_service_amt_distribution_7d")
 		private String zdjServiceAmtDistribution_7d;// （近7天）笔单价（实收金额）段分布（示例：0-15:0.2799,15-20:0.1775,20-25:0.1058,25-30:0.0956,30-35:0.0648,35-40:0.0751,40-45:0.0444,45-50:0.0137,50-55:0.0171,55及以上:0.1263）
-		@JSONField(name = "trade_again_ratio_30d")
+		@ApiField("trade_again_ratio_30d")
 		private Double tradeAgainRatio30d;// （近30天）复购率
-		@JSONField(name = "trade_again_ratio_active_30d")
+		@ApiField("trade_again_ratio_active_30d")
 		private Double tradeAgainRatioActive30d;// （近30天）复购率（口碑活跃用户）
-		@JSONField(name = "trade_user_cnt_30d")
+		@ApiField("trade_user_cnt_30d")
 		private Integer tradeUserCnt30d;// （近30天）交易会员数
-		@JSONField(name = "trade_user_cnt_active_30d")
+		@ApiField("trade_user_cnt_active_30d")
 		private Integer tradeUserCntActive30d;// （近30天）交易活跃会员数（口碑活跃用户贡献）
-		@JSONField(name = "zdj_order_amt_30d")
+		@ApiField("zdj_order_amt_30d")
 		private BigDecimal zdjOrderAmt30d;// （近30天）笔单价（订单金额）(单位:分)
-		@JSONField(name = "zdj_service_amt_30d")
+		@ApiField("zdj_service_amt_30d")
 		private BigDecimal zdjServiceAmt30d;// （近30天）笔单价（实收金额）(单位:分)
-		@JSONField(name = "zdj_order_amt_distribution_30d")
+		@ApiField("zdj_order_amt_distribution_30d")
 		private String zdjOrderAmtDistribution30d;// （近30天）笔单价（订单金额）段分布
-		@JSONField(name = "zdj_service_amt_distribution_30d")
+		@ApiField("zdj_service_amt_distribution_30d")
 		private String zdjServiceAmtDistribution30d;// （近30天）笔单价（实收金额）段分布
-		@JSONField(name = "trade_again_ratio_60d")
+		@ApiField("trade_again_ratio_60d")
 		private Double tradeAgainRatio60d;// （近60天）复购率
-		@JSONField(name = "trade_again_ratio_active_60d")
+		@ApiField("trade_again_ratio_active_60d")
 		private Double tradeAgainRatioActive60d;// （近60天）复购率（口碑活跃用户）
-		@JSONField(name = "trade_user_cnt_60d")
+		@ApiField("trade_user_cnt_60d")
 		private Integer tradeUserCnt60d;// （近60天）交易会员数
-		@JSONField(name = "trade_user_cnt_active_60d")
+		@ApiField("trade_user_cnt_active_60d")
 		private Integer tradeUserCntActive60d;// （近60天）交易活跃会员数（口碑活跃用户贡献）
-		@JSONField(name = "zdj_order_amt_60d")
+		@ApiField("zdj_order_amt_60d")
 		private BigDecimal zdjOrderAmt60d;// （近60天）笔单价（订单金额）(单位:分)
-		@JSONField(name = "zdj_service_amt_60d")
+		@ApiField("zdj_service_amt_60d")
 		private BigDecimal zdjServiceAmt60d;// （近60天）笔单价（实收金额）(单位:分)
-		@JSONField(name = "zdj_order_amt_distribution_60d")
+		@ApiField("zdj_order_amt_distribution_60d")
 		private String zdjOrderAmtDistribution60d;// （近60天）笔单价（订单金额）段分布
-		@JSONField(name = "zdj_service_amt_distribution_60d")
+		@ApiField("zdj_service_amt_distribution_60d")
 		private String zdjServiceAmtDistribution60d;// （近60天）笔单价（实收金额）段分布
-		@JSONField(name = "trade_again_ratio_90d")
+		@ApiField("trade_again_ratio_90d")
 		private Double tradeAgainRatio90d;// （近90天）复购率
-		@JSONField(name = "trade_again_ratio_active_90d")
+		@ApiField("trade_again_ratio_active_90d")
 		private Double tradeAgainRatioActive90d;// （近90天）复购率（口碑活跃用户）
-		@JSONField(name = "trade_user_cnt_90d")
+		@ApiField("trade_user_cnt_90d")
 		private Integer tradeUserCnt90d;// （近90天）交易会员数
-		@JSONField(name = "trade_user_cnt_active_90d")
+		@ApiField("trade_user_cnt_active_90d")
 		private Integer tradeUserCntActive90d;// （近90天）交易活跃会员数（口碑活跃用户贡献）
-		@JSONField(name = "zdj_order_amt_90d")
+		@ApiField("zdj_order_amt_90d")
 		private BigDecimal zdjOrderAmt90d;// （近90天）笔单价（订单金额）(单位:分)
-		@JSONField(name = "zdj_service_amt_90d")
+		@ApiField("zdj_service_amt_90d")
 		private BigDecimal zdjServiceAmt90d;// （近90天）笔单价（实收金额）(单位:分)
-		@JSONField(name = "zdj_order_amt_distribution_90d")
+		@ApiField("zdj_order_amt_distribution_90d")
 		private String zdjOrderAmtDistribution90d;// （近90天）笔单价（订单金额）段分布
-		@JSONField(name = "zdj_service_amt_distribution_90d")
+		@ApiField("zdj_service_amt_distribution_90d")
 		private String zdjServiceAmtDistribution90d;// （近90天）笔单价（实收金额）段分布"
 
 		public Date getBizDate() {

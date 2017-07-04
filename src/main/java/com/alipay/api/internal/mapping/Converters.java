@@ -7,6 +7,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.math.BigDecimal;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -157,6 +158,7 @@ public class Converters {
                     Method method = alipayFieldMethod.getMethod();
 
                     ApiField jsonField = field.getAnnotation(ApiField.class);
+                    DateFormatter dateFormatter = field.getAnnotation(DateFormatter.class);
                     if (jsonField != null) {
                         itemName = jsonField.value();
                     }
@@ -223,8 +225,16 @@ public class Converters {
                                 method.invoke(rsp, Boolean.valueOf(value.toString()));
                             }
                         }
+                    }else if(BigDecimal.class.isAssignableFrom(typeClass)){
+                        Object value = reader.getPrimitiveObject(itemName);
+                        if(value !=null){
+                            method.invoke(rsp, new BigDecimal(value.toString()));
+                        }
                     } else if (Double.class.isAssignableFrom(typeClass)) {
                         Object value = reader.getPrimitiveObject(itemName);
+                        if(value instanceof String){
+                            value = Double.valueOf(String.valueOf(value));
+                        }
                         if (value instanceof Double) {
                             method.invoke(rsp, (Double) value);
                         } else {
@@ -242,7 +252,7 @@ public class Converters {
                             }
                         }
                     } else if (Date.class.isAssignableFrom(typeClass)) {
-                        DateFormat format = new SimpleDateFormat(AlipayConstants.DATE_TIME_FORMAT);
+                        DateFormat format = new SimpleDateFormat(dateFormatter!=null?dateFormatter.value():AlipayConstants.DATE_TIME_FORMAT);
                         format.setTimeZone(TimeZone.getTimeZone(AlipayConstants.DATE_TIMEZONE));
                         Object value = reader.getPrimitiveObject(itemName);
                         if (value instanceof String) {

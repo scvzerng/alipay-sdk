@@ -5,6 +5,7 @@ import com.alipay.api.AlipayObject;
 import com.alipay.api.internal.mapping.ApiField;
 import com.alipay.api.internal.mapping.ApiListField;
 import com.alipay.api.internal.mapping.DateFormatter;
+import com.alipay.api.response.KoubeiMarketingDataIndicatorQueryResponse;
 import io.swagger.annotations.*;
 
 
@@ -107,9 +108,8 @@ public class KoubeiMarketingDataIndicatorQueryModel extends AlipayObject {
         /**
          * 门店ID列表
          */@ApiModelProperty(notes = "门店ID列表")
-        @ApiListField("store_ids")
-        @ApiField("string")
-        private List<String> storeIds;
+        @ApiField("store_Ids")
+        private String storeIds;
 
         public String getCampId() {
             return campId;
@@ -135,11 +135,11 @@ public class KoubeiMarketingDataIndicatorQueryModel extends AlipayObject {
             this.sortType = sortType;
         }
 
-        public List<String> getStoreIds() {
+        public String getStoreIds() {
             return storeIds;
         }
 
-        public void setStoreIds(List<String> storeIds) {
+        public void setStoreIds(String storeIds) {
             this.storeIds = storeIds;
         }
     }
@@ -149,13 +149,22 @@ public class KoubeiMarketingDataIndicatorQueryModel extends AlipayObject {
     }
 
     public enum BizType {
-        MemberQuery,
-        MemberQueryByStore,
-        TradeQuery,
-        TradeQueryByStore,
-        CampaignQuery,
-        CampaignQueryByStore;
+        MemberQuery(KoubeiMarketingDataIndicatorQueryResponse.MemberQueryModel.class),
+        MemberQueryByStore(KoubeiMarketingDataIndicatorQueryResponse.MemberQueryByStoreModel.class),
+        TradeQuery(KoubeiMarketingDataIndicatorQueryResponse.TradeQueryModel.class),
+        TradeQueryByStore(KoubeiMarketingDataIndicatorQueryResponse.TradeQueryByStoreModel.class),
+        CampaignQuery(KoubeiMarketingDataIndicatorQueryResponse.CampaignQueryModel.class),
+        CampaignQueryByStore(KoubeiMarketingDataIndicatorQueryResponse.CampaignQueryByStoreModel.class);
 
+        private Class clazz;
+
+        BizType(Class clazz) {
+            this.clazz = clazz;
+        }
+
+        public Class getClazz() {
+            return clazz;
+        }
     }
 
 
