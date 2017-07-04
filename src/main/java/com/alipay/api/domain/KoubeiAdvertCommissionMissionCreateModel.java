@@ -5,6 +5,11 @@ import java.util.List;
 import com.alipay.api.AlipayObject;
 import com.alipay.api.internal.mapping.ApiField;
 import com.alipay.api.internal.mapping.ApiListField;
+import com.yazuo.xiaoya.common.annotation.validate.EnumCheck;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotBlank;
+
+import javax.validation.constraints.NotNull;
 
 /**
  * 口碑客分佣创建
@@ -24,6 +29,7 @@ MISSION_CLAIM_CLAUSE：专属认领人条款，设定专属人条款，则只能
 	 */
 	@ApiListField("commission_clause")
 	@ApiField("kb_advert_commission_clause")
+	@NotNull
 	private List<KbAdvertCommissionClause> commissionClause;
 
 	/**
@@ -40,12 +46,15 @@ activity_id：运营活动ID
 voucher：商品ID
 	 */
 	@ApiField("identify_type")
+	@EnumCheck(enums = {"activity_id","voucher"})
 	private String identifyType;
 
 	/**
 	 * 分佣任务名称，由于不在任何场景不显示，因此可ISV按自己需求自行定义
 	 */
 	@ApiField("name")
+	@NotBlank
+	@Length(max = 128)
 	private String name;
 
 	/**
@@ -62,6 +71,7 @@ MERCHANT：外部商户
 PROVIDER：服务商
 	 */
 	@ApiField("operator_type")
+	@EnumCheck(enums = {"MERCHANT","PROVIDER"},required = false)
 	private String operatorType;
 
 	/**
