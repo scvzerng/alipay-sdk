@@ -71,6 +71,9 @@ public class JsonConverter implements Converter {
 
             public Object getObject(Object name, Class<?> type) throws AlipayApiException {
                 Object tmp = json.get(name);
+                if(tmp instanceof String){
+                    tmp = JSON.parseObject((String) tmp);
+                }
                 if (tmp instanceof Map<?, ?>) {
                     Map<?, ?> map = (Map<?, ?>) tmp;
                     return fromJson(map, type);

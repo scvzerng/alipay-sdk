@@ -4,6 +4,8 @@ import com.alipay.api.AlipayObject;
 import com.alipay.api.internal.mapping.ApiField;
 import io.swagger.annotations.*;
 
+import java.io.Serializable;
+
 /**
  * 诊断结果信息
  *
@@ -54,7 +56,7 @@ public class DiagnoseResult extends AlipayObject {
 
     @ApiModel
 
-    public static class BizData {
+    public static class BizData implements Serializable {
         /**
          * 消费周期
          */
@@ -79,5 +81,37 @@ public class DiagnoseResult extends AlipayObject {
         @ApiModelProperty(notes = " 回头率")
         @ApiField("repayRate")
         private String repayRate;
+
+        public Integer getTradeCycle() {
+            return tradeCycle;
+        }
+
+        public void setTradeCycle(Integer tradeCycle) {
+            this.tradeCycle = tradeCycle;
+        }
+
+        public String getUserRate() {
+            return userRate;
+        }
+
+        public void setUserRate(String userRate) {
+            this.userRate = userRate;
+        }
+
+        public String getIndustryRate() {
+            return industryRate;
+        }
+
+        public void setIndustryRate(String industryRate) {
+            this.industryRate = industryRate;
+        }
+
+        public String getRepayRate() {
+            return repayRate;
+        }
+
+        public void setRepayRate(String repayRate) {
+            this.repayRate = repayRate;
+        }
     }
 }
