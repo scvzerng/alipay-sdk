@@ -25,6 +25,11 @@
         </dependency>
         <dependency>
             <groupId>com.yazuo.xiaoya</groupId>
+            <artifactId>vo</artifactId>
+            <version>0.0.4-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.yazuo.xiaoya</groupId>
             <artifactId>annotations</artifactId>
             <version>0.0.4-SNAPSHOT</version>
         </dependency>

@@ -16,19 +16,25 @@ public abstract class AlipayResponse implements Serializable {
 
     private static final long   serialVersionUID = 5014379068811962022L;
 
+    @ApiModelProperty(notes = "")
     @ApiField("code")
     private String              code;
 
+    @ApiModelProperty(notes = "")
     @ApiField("msg")
     private String              msg;
 
+    @ApiModelProperty(notes = "")
     @ApiField("sub_code")
     private String              subCode;
 
+    @ApiModelProperty(notes = "")
     @ApiField("sub_msg")
     private String              subMsg;
 
+    @ApiModelProperty(notes = "")
     private String              body;
+    @ApiModelProperty(notes = "")
     private Map<String, String> params;
 
     /**
