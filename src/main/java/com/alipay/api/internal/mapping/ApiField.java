@@ -17,5 +17,6 @@ public @interface ApiField {
 
     /** JSON属性映射名称 **/
 	public String value() default "";
+	String formatter() default "";
 
 }

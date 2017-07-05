@@ -3,8 +3,7 @@ package com.alipay.api.domain;
 
 import com.alipay.api.AlipayObject;
 import com.alipay.api.internal.mapping.ApiField;
-import com.alipay.api.internal.mapping.ApiListField;
-import com.alipay.api.internal.mapping.DateFormatter;
+
 import com.alipay.api.response.KoubeiMarketingDataIndicatorQueryResponse;
 import io.swagger.annotations.*;
 
@@ -12,7 +11,7 @@ import io.swagger.annotations.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
+
 
 /**
  * 营销活动指标查询
@@ -29,8 +28,7 @@ public class KoubeiMarketingDataIndicatorQueryModel extends AlipayObject {
      * 开始日期,格式:yyyyMMdd
      */
     @ApiModelProperty(notes = "开始日期,格式:yyyyMMdd")
-    @ApiField( "begin_date")
-    @DateFormatter("yyyyMMdd")
+    @ApiField( value = "begin_date",formatter = "yyyyMMdd")
     @NotNull(message = "开始日期不能为空")
     private Date beginDate;
 
@@ -54,8 +52,7 @@ public class KoubeiMarketingDataIndicatorQueryModel extends AlipayObject {
      * 结束日期 格式:yyyyMMdd
      */
     @ApiModelProperty(notes = "结束日期格式:yyyyMMdd")
-    @ApiField( "end_date")
-    @DateFormatter("yyyyMMdd")
+    @ApiField( value = "end_date",formatter = "yyyyMMdd")
     @NotNull(message = "结束日期不能为空")
     private Date endDate;
 

@@ -1,13 +1,11 @@
 package com.alipay.api.response;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.TypeReference;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.alipay.api.domain.KoubeiMarketingDataIndicatorQueryModel;
 import com.alipay.api.internal.mapping.ApiField;
 
 import com.alipay.api.AlipayResponse;
-import com.alipay.api.internal.mapping.DateFormatter;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -46,7 +44,7 @@ public class KoubeiMarketingDataIndicatorQueryResponse extends AlipayResponse {
 	 * 例如
 	 * 	KoubeiMarketingDataIndicatorQueryResponse.MemberQueryModel mqm = new KoubeiMarketingDataIndicatorQueryResponse().getIndicatorInfos()
 	 * 返回值为对应class的list
-	 * @param t
+	 * @param bizType
 	 * @param <T>
 	 * @return	List<T>
 	 */
@@ -68,8 +66,7 @@ public class KoubeiMarketingDataIndicatorQueryResponse extends AlipayResponse {
 	 * @author wuqiong  2016年7月14日
 	 */
 	public static class MemberQueryModel implements Serializable {
-		@JSONField(name = "biz_date")
-		@DateFormatter("yyyyMMdd")
+		@JSONField(name = "biz_date",format = "yyyyMMdd")
 		private Date bizDate;                   //业务日期                                      格式:yyyyMMdd
 		@JSONField(name = "today_new_user_cnt")
 		private Integer todayNewUserCnt;         //当日新增会员数                                首次来商户支付的会员数
@@ -140,8 +137,7 @@ public class KoubeiMarketingDataIndicatorQueryResponse extends AlipayResponse {
 
 		private static final long serialVersionUID = -7888567222365648587L;
 
-		@JSONField(name = "biz_date")
-		@DateFormatter("yyyyMMdd")
+		@JSONField(name = "biz_date",format = "yyyyMMdd")
 		private Date bizDate;                   //业务日期
 		@JSONField(name = "store_id")
 		private String storeId;                   //门店ID
@@ -253,8 +249,7 @@ public class KoubeiMarketingDataIndicatorQueryResponse extends AlipayResponse {
 
 		private static final long serialVersionUID = -7477049125292587003L;
 
-		@JSONField(name = "biz_date")
-		@DateFormatter("yyyyMMdd")
+		@JSONField(name = "biz_date",format = "yyyyMMdd")
 		private Date bizDate;                //业务日期                         格式:yyyyMMdd
 		@JSONField(name = "today_trade_amt")
 		private BigDecimal todayTradeAmt;         //当日收益金额                     单位：分
@@ -355,8 +350,7 @@ public class KoubeiMarketingDataIndicatorQueryResponse extends AlipayResponse {
 
 		private static final long serialVersionUID = -8899417032894419883L;
 
-		@JSONField(name = "biz_date")
-		@DateFormatter("yyyyMMdd")
+		@JSONField(name = "biz_date",format = "yyyyMMdd")
 		private Date bizDate;                     //业务日期              格式:yyyyMMdd
 		@JSONField(name = "store_id")
 		private String storeId;                     //门店ID
@@ -577,8 +571,7 @@ public class KoubeiMarketingDataIndicatorQueryResponse extends AlipayResponse {
 
 		private static final long serialVersionUID = -7984739046613054783L;
 
-		@JSONField(name = "biz_date")
-		@DateFormatter("yyyyMMdd")
+		@JSONField(name = "biz_date",format = "yyyyMMdd")
 		private Date bizDate;                   //业务日期                            格式:yyyyMMdd
 		@JSONField(name = "camp_name")
 		private String campName;				   //活动名称
@@ -918,8 +911,7 @@ public class KoubeiMarketingDataIndicatorQueryResponse extends AlipayResponse {
 	public static class CampaignQueryByStoreModel implements Serializable {
 
 		private static final long serialVersionUID = 3877935574888235123L;
-		@JSONField(name = "biz_date")
-		@DateFormatter("yyyyMMdd")
+		@JSONField(name = "biz_date",format = "yyyyMMdd")
 		private Date bizDate;                        //业务日期               格式:yyyyMMdd
 		@JSONField(name = "store_id")
 		private String storeId;                        //门店ID
@@ -1180,8 +1172,7 @@ public class KoubeiMarketingDataIndicatorQueryResponse extends AlipayResponse {
 
 		private static final long serialVersionUID = 7525174079967978332L;
 
-		@JSONField(name = "biz_date")
-		@DateFormatter("yyyyMMdd")
+		@JSONField(name = "biz_date",format = "yyyyMMdd")
 		private Date bizDate;// 业务日期
 		@JSONField(name = "partner_id")
 		private String partnerId;// 商户id
@@ -1392,8 +1383,7 @@ public class KoubeiMarketingDataIndicatorQueryResponse extends AlipayResponse {
 
 		private static final long serialVersionUID = -7922467944480347554L;
 
-		@JSONField(name = "biz_date")
-		@DateFormatter("yyyyMMdd")
+		@JSONField(name = "biz_date",format = "yyyyMMdd")
 		private Date bizDate;//业务日期
 		@JSONField(name = "partner_id")
 		private String partnerId;//商户pid

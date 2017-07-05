@@ -1,13 +1,9 @@
 package com.alipay.api.response;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.TypeReference;
-import com.alibaba.fastjson.annotation.JSONField;
 import com.alipay.api.internal.mapping.ApiField;
 
 import com.alipay.api.AlipayResponse;
 import com.alipay.api.internal.mapping.ApiListField;
-import com.alipay.api.internal.mapping.DateFormatter;
 import io.swagger.annotations.*;
 
 import java.io.Serializable;
@@ -55,8 +51,7 @@ public class KoubeiMarketingDataTradeHabbitQueryResponse extends AlipayResponse 
 
 	public static class TradeHabit implements Serializable {
 
-		@ApiField("biz_date")
-		@DateFormatter("yyyyMMdd")
+		@ApiField(value = "biz_date",formatter = "yyyyMMdd")
 		private Date bizDate;// 业务日期 格式:yyyyMMdd
 		@ApiField("partner_industry_type")
 		private String partnerIndustryType;// 商户行业标识（轻餐or正餐）

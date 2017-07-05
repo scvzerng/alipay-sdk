@@ -3,7 +3,6 @@ package com.alipay.api.domain;
 import com.alipay.api.AlipayObject;
 import com.alipay.api.internal.mapping.ApiField;
 import com.alipay.api.internal.mapping.ApiListField;
-import com.alipay.api.internal.mapping.DateFormatter;
 import io.swagger.annotations.*;
 
 import javax.validation.constraints.NotNull;
@@ -24,8 +23,7 @@ public class KoubeiMarketingDataTradeHabbitQueryModel extends AlipayObject {
 	/**
 	 * 业务日期 格式:yyyyMMdd
 	 */@ApiModelProperty(notes = " 业务日期 格式:yyyyMMdd")
-	@ApiField("biz_date")
-	@DateFormatter("yyyyMMdd")
+	@ApiField(value = "biz_date",formatter = "yyyyMMdd")
 	@NotNull(message = "开始日期不能为空")
 	private Date bizDate;
 

@@ -158,7 +158,6 @@ public class Converters {
                     Method method = alipayFieldMethod.getMethod();
 
                     ApiField jsonField = field.getAnnotation(ApiField.class);
-                    DateFormatter dateFormatter = field.getAnnotation(DateFormatter.class);
                     if (jsonField != null) {
                         itemName = jsonField.value();
                     }
@@ -252,7 +251,7 @@ public class Converters {
                             }
                         }
                     } else if (Date.class.isAssignableFrom(typeClass)) {
-                        DateFormat format = new SimpleDateFormat(dateFormatter!=null?dateFormatter.value():AlipayConstants.DATE_TIME_FORMAT);
+                        DateFormat format = new SimpleDateFormat((jsonField.formatter()!=null&&!"".equals(jsonField.formatter()))?jsonField.formatter():AlipayConstants.DATE_TIME_FORMAT);
                         format.setTimeZone(TimeZone.getTimeZone(AlipayConstants.DATE_TIMEZONE));
                         Object value = reader.getPrimitiveObject(itemName);
                         if (value instanceof String) {
