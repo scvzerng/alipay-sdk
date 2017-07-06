@@ -4,6 +4,9 @@ import com.alipay.api.internal.mapping.ApiField;
 
 import com.alipay.api.AlipayResponse;
 
+import java.io.Serializable;
+import java.util.List;
+
 /**
  * ALIPAY API: koubei.marketing.campaign.crowd.detail.query response.
  * 
@@ -41,5 +44,6 @@ value：标签对应的值
 	public String getName( ) {
 		return this.name;
 	}
+
 
 }
