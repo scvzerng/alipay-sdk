@@ -96,7 +96,6 @@ public class KoubeiMarketingCampaignCrowdCreateModel extends AlipayObject {
         this.outBizNo = outBizNo;
     }
 
-
     /**
      * <p>ClassName:CreateTags.java </p>
      * <p>Description: 创建人群组信息详细规则标签数据转换类 </p>
@@ -118,7 +117,7 @@ public class KoubeiMarketingCampaignCrowdCreateModel extends AlipayObject {
          * 判断条件   一个枚举值
          */
         @ApiModelProperty(notes = " 判断条件   一个枚举值")
-        private Operate op;                    //判断条件   一个枚举值
+        private KoubeiMarketingCampaignCrowdCreateModel.Operate op;                    //判断条件   一个枚举值
         /**
          * 介绍或者 标签码详细数值如       "value":"行业标签"  或者   "value":["白领","蓝领"]  或者   "value":[0526,9635]
          */
@@ -139,11 +138,11 @@ public class KoubeiMarketingCampaignCrowdCreateModel extends AlipayObject {
             this.tagCode = tagCode;
         }
 
-        public Operate getOp() {
+        public KoubeiMarketingCampaignCrowdCreateModel.Operate getOp() {
             return op;
         }
 
-        public void setOp(Operate op) {
+        public void setOp(KoubeiMarketingCampaignCrowdCreateModel.Operate op) {
             this.op = op;
         }
 
@@ -164,6 +163,7 @@ public class KoubeiMarketingCampaignCrowdCreateModel extends AlipayObject {
 //        }
 
     }
+
 
     /**
      * Created by sundongfeng@yazuo.com on 2016/5/4 11:15.

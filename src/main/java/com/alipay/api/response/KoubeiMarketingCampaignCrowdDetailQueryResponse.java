@@ -1,13 +1,11 @@
 package com.alipay.api.response;
 
 import com.alibaba.fastjson.annotation.*;
-import com.alipay.api.domain.KoubeiMarketingCampaignCrowdCreateModel;
-import com.alipay.api.internal.mapping.ApiField;
 
 import com.alipay.api.AlipayResponse;
+import com.alipay.api.domain.KoubeiMarketingCampaignCrowdCreateModel;
 import io.swagger.annotations.*;
 
-import java.io.Serializable;
 import java.util.List;
 
 /**
