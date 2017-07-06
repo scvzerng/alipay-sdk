@@ -3,6 +3,7 @@ package com.alipay.api;
 import java.io.Serializable;
 import java.util.Map;
 
+import com.alibaba.fastjson.annotation.JSONField;
 import com.alipay.api.internal.mapping.ApiField;
 import com.alipay.api.internal.util.StringUtils;
 import io.swagger.annotations.ApiModelProperty;
@@ -16,25 +17,20 @@ public abstract class AlipayResponse implements Serializable {
 
     private static final long   serialVersionUID = 5014379068811962022L;
 
-    @ApiModelProperty(notes = "")
-    @ApiField("code")
     private String              code;
 
-    @ApiModelProperty(notes = "")
-    @ApiField("msg")
+
     private String              msg;
 
-    @ApiModelProperty(notes = "")
-    @ApiField("sub_code")
+
     private String              subCode;
 
-    @ApiModelProperty(notes = "")
-    @ApiField("sub_msg")
+
     private String              subMsg;
 
-    @ApiModelProperty(notes = "")
+
     private String              body;
-    @ApiModelProperty(notes = "")
+
     private Map<String, String> params;
 
     /**

@@ -105,7 +105,7 @@ public class KoubeiMarketingCampaignCrowdCreateModel extends AlipayObject {
      * @author wuqiong  2016年5月9日
      */
     @ApiModel(description = " <p>ClassName:CreateTags.java </p>")
-    public class CreateTags implements Serializable {
+    public static class CreateTags implements Serializable {
         private static final long serialVersionUID = -424908767474605729L;
 
         /**
@@ -127,9 +127,9 @@ public class KoubeiMarketingCampaignCrowdCreateModel extends AlipayObject {
         /**
          * 符合参数集合
          */
-        @JSONField(name = "sub_tags", alternateNames = "subTags")
-        @ApiModelProperty(notes = " 符合参数集合")
-        private List<CreateTags> subTags;    //符合参数集合
+//        @JSONField(name = "sub_tags", alternateNames = "subTags")
+//        @ApiModelProperty(notes = " 符合参数集合")
+//        private List<CreateTags> subTags;    //符合参数集合
 
         public String getTagCode() {
             return tagCode;
@@ -155,13 +155,13 @@ public class KoubeiMarketingCampaignCrowdCreateModel extends AlipayObject {
             this.value = value;
         }
 
-        public List<CreateTags> getSubTags() {
-            return subTags;
-        }
-
-        public void setSubTags(List<CreateTags> subTags) {
-            this.subTags = subTags;
-        }
+//        public List<CreateTags> getSubTags() {
+//            return subTags;
+//        }
+//
+//        public void setSubTags(List<CreateTags> subTags) {
+//            this.subTags = subTags;
+//        }
 
     }
 
