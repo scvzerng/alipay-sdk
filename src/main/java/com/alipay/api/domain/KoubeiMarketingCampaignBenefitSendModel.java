@@ -1,5 +1,6 @@
 package com.alipay.api.domain;
 
+import com.alibaba.fastjson.annotation.*;
 import com.alipay.api.AlipayObject;
 import com.alipay.api.internal.mapping.ApiField;
 import io.swagger.annotations.*;
@@ -19,46 +20,45 @@ public class KoubeiMarketingCampaignBenefitSendModel extends AlipayObject {
      * 领券渠道
      */
     @ApiModelProperty(notes = " 领券渠道")
-    @ApiField("channel")
     @NotBlank
     private String channel;
 
     /**
      * 优惠类型
      */
+    @JSONField(name = "discount_type", alternateNames = "discountType")
     @ApiModelProperty(notes = " 优惠类型")
-    @ApiField("discount_type")
     @NotBlank
     private String discountType;
 
     /**
      * 触发权益的优惠id，当discount_type是ITEM的时候这个内容是商品id
      */
+    @JSONField(name = "item_id", alternateNames = "itemId")
     @ApiModelProperty(notes = " 触发权益的优惠id，当discount_type是ITEM的时候这个内容是商品id")
-    @ApiField("item_id")
     @NotBlank
     private String itemId;
 
     /**
      * 外部流水号，用于控制幂等
      */
+    @JSONField(name = "out_biz_no", alternateNames = "outBizNo")
     @ApiModelProperty(notes = " 外部流水号，用于控制幂等")
-    @ApiField("out_biz_no")
     @NotBlank
     private String outBizNo;
 
     /**
      * 领券的门店id
      */
+    @JSONField(name = "shop_id", alternateNames = "shopId")
     @ApiModelProperty(notes = " 领券的门店id")
-    @ApiField("shop_id")
     private String shopId;
 
     /**
      * 支付宝用户ID
      */
+    @JSONField(name = "user_id", alternateNames = "userId")
     @ApiModelProperty(notes = " 支付宝用户ID")
-    @ApiField("user_id")
     @NotBlank
     private String userId;
 

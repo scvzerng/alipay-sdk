@@ -3,6 +3,7 @@ package com.alipay.api.domain;
 import java.util.Date;
 import java.util.List;
 
+import com.alibaba.fastjson.annotation.*;
 import com.alipay.api.AlipayObject;
 import com.alipay.api.internal.mapping.ApiField;
 import com.alipay.api.internal.mapping.ApiListField;
@@ -23,29 +24,29 @@ public class KoubeiMarketingCampaignActivityModifyModel extends AlipayObject {
     /**
      * 是否自动续期活动，仅当活动下券的有效期均为相对有效期时才能设置成Y
      */
+    @JSONField(name = "auto_delay_flag", alternateNames = "autoDelayFlag")
     @ApiModelProperty(notes = "是否自动续期活动，仅当活动下券的有效期均为相对有效期时才能设置成Y")
-    @ApiField("auto_delay_flag")
     private String autoDelayFlag;
 
     /**
      * 活动预算
      */
+    @JSONField(name = "budget_info", alternateNames = "budgetInfo")
     @ApiModelProperty(notes = "活动预算")
-    @ApiField("budget_info")
     private BudgetInfo budgetInfo;
 
     /**
      * 活动id
      */
+    @JSONField(name = "camp_id", alternateNames = "campId")
     @ApiModelProperty(notes = "活动id")
-    @ApiField("camp_id")
     private String campId;
 
     /**
      * 活动限制信息
      */
+    @JSONField(name = "constraint_info", alternateNames = "constraintInfo")
     @ApiModelProperty(notes = "活动限制信息")
-    @ApiField("constraint_info")
     private ConstraintInfo constraintInfo;
 
     /**
@@ -53,22 +54,21 @@ public class KoubeiMarketingCampaignActivityModifyModel extends AlipayObject {
      * 不允许修改，必须与活动详情查询的结果保持一致
      */
     @ApiModelProperty(notes = "活动详细说明不允许修改，必须与活动详情查询的结果保持一致")
-    @ApiField("desc")
     private String desc;
 
     /**
      * 活动结束时间
      * 活动结束时间只允许延长
      */
+    @JSONField(name = "end_time", alternateNames = "endTime")
     @ApiModelProperty(notes = "活动结束时间活动结束时间只允许延长")
-    @ApiField("end_time")
     private Date endTime;
 
     /**
      * 活动的扩展信息
      */
+    @JSONField(name = "ext_info", alternateNames = "extInfo")
     @ApiModelProperty(notes = "活动的扩展信息")
-    @ApiField("ext_info")
     private String extInfo;
 
     /**
@@ -76,59 +76,56 @@ public class KoubeiMarketingCampaignActivityModifyModel extends AlipayObject {
      * 不允许修改，必须与活动详情查询的结果保持一致
      */
     @ApiModelProperty(notes = "活动名称不允许修改，必须与活动详情查询的结果保持一致")
-    @ApiField("name")
     private String name;
 
     /**
      * 操作人id，必须和operator_type配对出现，不填时默认是商户
      */
+    @JSONField(name = "operator_id", alternateNames = "operatorId")
     @ApiModelProperty(notes = "操作人id，必须和operator_type配对出现，不填时默认是商户")
-    @ApiField("operator_id")
     private String operatorId;
 
     /**
      * 操作人类型,有以下值可填：MER（外部商户），MER_OPERATOR（外部商户操作员），PROVIDER（外部服务商），PROVIDER_STAFF（外部服务商员工），默认不需要填这个字段，默认为MER
      */
+    @JSONField(name = "operator_type", alternateNames = "operatorType")
     @ApiModelProperty(notes = "操作人类型,有以下值可填：MER（外部商户），MER_OPERATOR（外部商户操作员），PROVIDER（外部服务商），PROVIDER_STAFF（外部服务商员工），默认不需要填这个字段，默认为MER")
-    @ApiField("operator_type")
     private String operatorType;
 
     /**
      * 外部批次ID，用户指定,每次请求保持唯一
      */
+    @JSONField(name = "out_biz_no", alternateNames = "outBizNo")
     @ApiModelProperty(notes = "外部批次ID，用户指定,每次请求保持唯一")
-    @ApiField("out_biz_no")
     private String outBizNo;
 
     /**
      * 营销工具集
      */
+    @JSONField(name = "promo_tools", alternateNames = "promoTools")
     @ApiModelProperty(notes = "营销工具集")
-    @ApiListField("promo_tools")
-    @ApiField("promo_tool")
     private List<PromoTool> promoTools;
 
     /**
      * 投放渠道集，当活动类型为DIRECT_SEND或者REAL_TIME_SEND时必填，为CONSUME_SEND时必须为空
      */
+    @JSONField(name = "publish_channels", alternateNames = "publishChannels")
     @ApiModelProperty(notes = "投放渠道集，当活动类型为DIRECT_SEND或者REAL_TIME_SEND时必填，为CONSUME_SEND时必须为空")
-    @ApiListField("publish_channels")
-    @ApiField("publish_channel")
     private List<PublishChannel> publishChannels;
 
     /**
      * 招商工具
      */
+    @JSONField(name = "recruit_tool", alternateNames = "recruitTool")
     @ApiModelProperty(notes = "招商工具")
-    @ApiField("recruit_tool")
     private RecruitTool recruitTool;
 
     /**
      * 活动开始时间
      * 不允许修改，必须与活动详情查询的结果保持一致
      */
+    @JSONField(name = "start_time", alternateNames = "startTime")
     @ApiModelProperty(notes = "活动开始时间不允许修改，必须与活动详情查询的结果保持一致")
-    @ApiField("start_time")
     private Date startTime;
 
     /**
@@ -136,7 +133,6 @@ public class KoubeiMarketingCampaignActivityModifyModel extends AlipayObject {
      * 不允许修改，必须与活动详情查询的结果保持一致
      */
     @ApiModelProperty(notes = "活动类型不允许修改，必须与活动详情查询的结果保持一致")
-    @ApiField("type")
     private String type;
 
     public String getAutoDelayFlag() {

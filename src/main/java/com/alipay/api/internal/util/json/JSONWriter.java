@@ -18,6 +18,8 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Stack;
 import java.util.TimeZone;
+
+import com.alibaba.fastjson.JSON;
 import com.alipay.api.AlipayConstants;
 import com.alipay.api.internal.mapping.ApiField;
 import com.alipay.api.internal.mapping.ApiListField;
@@ -48,9 +50,10 @@ public class JSONWriter {
     }
 
     public String write(Object object, boolean isApiModel) {
-        buf.setLength(0);
-        value(object, isApiModel);
-        return buf.toString();
+       return  JSON.toJSONString(object);
+//        buf.setLength(0);
+//        value(object, isApiModel);
+//        return buf.toString();
     }
 
     public String write(long n) {

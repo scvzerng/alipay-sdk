@@ -2,6 +2,7 @@ package com.alipay.api.domain;
 
 import java.util.List;
 
+import com.alibaba.fastjson.annotation.*;
 import com.alipay.api.AlipayObject;
 import com.alipay.api.internal.mapping.ApiField;
 import com.alipay.api.internal.mapping.ApiListField;
@@ -14,60 +15,58 @@ import com.alipay.api.internal.mapping.ApiListField;
  */
 public class VoucherDescDetail extends AlipayObject {
 
-	private static final long serialVersionUID = 7179938813447281793L;
+    private static final long serialVersionUID = 7179938813447281793L;
 
-	/**
-	 * 具体描述信息列表
-	 */
-	@ApiListField("details")
-	@ApiField("string")
-	private List<String> details;
+    /**
+     * 具体描述信息列表
+     */
+    private List<String> details;
 
-	/**
-	 * 图片描述信息
-	 */
-	@ApiListField("images")
-	@ApiField("string")
-	private List<String> images;
+    /**
+     * 图片描述信息
+     */
+    private List<String> images;
 
-	/**
-	 * 券说明的标题
-	 */
-	@ApiField("title")
-	private String title;
+    /**
+     * 券说明的标题
+     */
+    private String title;
 
-	/**
-	 * 券外部详情描述
-	 */
-	@ApiField("url")
-	private String url;
+    /**
+     * 券外部详情描述
+     */
+    private String url;
 
-	public List<String> getDetails() {
-		return this.details;
-	}
-	public void setDetails(List<String> details) {
-		this.details = details;
-	}
+    public List<String> getDetails() {
+        return this.details;
+    }
 
-	public List<String> getImages() {
-		return this.images;
-	}
-	public void setImages(List<String> images) {
-		this.images = images;
-	}
+    public void setDetails(List<String> details) {
+        this.details = details;
+    }
 
-	public String getTitle() {
-		return this.title;
-	}
-	public void setTitle(String title) {
-		this.title = title;
-	}
+    public List<String> getImages() {
+        return this.images;
+    }
 
-	public String getUrl() {
-		return this.url;
-	}
-	public void setUrl(String url) {
-		this.url = url;
-	}
+    public void setImages(List<String> images) {
+        this.images = images;
+    }
+
+    public String getTitle() {
+        return this.title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getUrl() {
+        return this.url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
 
 }

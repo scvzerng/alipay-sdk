@@ -17,7 +17,7 @@ public class KoubeiMarketingCampaignCrowdCreateResponse extends AlipayResponse {
 	/** 
 	 * 返回的人群组的唯一标识
 	 */
-	@ApiField("crowd_group_id")
+//	@ApiField("crowd_group_id")
 	private String crowdGroupId;
 
 	public void setCrowdGroupId(String crowdGroupId) {

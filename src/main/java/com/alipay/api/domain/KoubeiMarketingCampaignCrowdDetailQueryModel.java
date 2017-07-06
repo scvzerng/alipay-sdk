@@ -1,7 +1,9 @@
 package com.alipay.api.domain;
 
+import com.alibaba.fastjson.annotation.*;
 import com.alipay.api.AlipayObject;
 import com.alipay.api.internal.mapping.ApiField;
+import io.swagger.annotations.*;
 
 /**
  * 口碑商户人群组详情查询接口
@@ -9,21 +11,24 @@ import com.alipay.api.internal.mapping.ApiField;
  * @author auto create
  * @since 1.0, 2016-08-29 14:52:14
  */
+@ApiModel(description = " 口碑商户人群组详情查询接口")
 public class KoubeiMarketingCampaignCrowdDetailQueryModel extends AlipayObject {
 
-	private static final long serialVersionUID = 7673629475912652215L;
+    private static final long serialVersionUID = 7673629475912652215L;
 
-	/**
-	 * 人群组ID，人群组创建成功时返回的ID
-	 */
-	@ApiField("crowd_group_id")
-	private String crowdGroupId;
+    /**
+     * 人群组ID，人群组创建成功时返回的ID
+     */
+    @ApiModelProperty(notes = " 人群组ID，人群组创建成功时返回的ID")
+    @JSONField(name = "crowd_group_id", alternateNames = "crowdGroupId")
+    private String crowdGroupId;
 
-	public String getCrowdGroupId() {
-		return this.crowdGroupId;
-	}
-	public void setCrowdGroupId(String crowdGroupId) {
-		this.crowdGroupId = crowdGroupId;
-	}
+    public String getCrowdGroupId() {
+        return this.crowdGroupId;
+    }
+
+    public void setCrowdGroupId(String crowdGroupId) {
+        this.crowdGroupId = crowdGroupId;
+    }
 
 }

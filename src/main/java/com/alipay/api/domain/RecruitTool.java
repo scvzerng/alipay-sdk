@@ -3,6 +3,7 @@ package com.alipay.api.domain;
 import java.util.Date;
 import java.util.List;
 
+import com.alibaba.fastjson.annotation.*;
 import com.alipay.api.AlipayObject;
 import com.alipay.api.internal.mapping.ApiField;
 import com.alipay.api.internal.mapping.ApiListField;
@@ -15,59 +16,62 @@ import com.alipay.api.internal.mapping.ApiListField;
  */
 public class RecruitTool extends AlipayObject {
 
-	private static final long serialVersionUID = 7457545374444189194L;
+    private static final long serialVersionUID = 7457545374444189194L;
 
-	/**
-	 * 招商结束时间
-	 */
-	@ApiField("end_time")
-	private Date endTime;
+    /**
+     * 招商结束时间
+     */
+    @JSONField(name = "end_time", alternateNames = "endTime")
+    private Date endTime;
 
-	/**
-	 * 如果这个值是true,那么活动的参与门店不需要招商
-	 */
-	@ApiField("exclude_constraint_shops")
-	private Boolean excludeConstraintShops;
+    /**
+     * 如果这个值是true,那么活动的参与门店不需要招商
+     */
+    @JSONField(name = "exclude_constraint_shops", alternateNames = "excludeConstraintShops")
+    private Boolean excludeConstraintShops;
 
-	/**
-	 * 招商pid和pid对应的门店列表（对于品牌商，此字段必填，活动和券的适用门店为空。对于商圈，此字段需为空，门店需要填在活动和券的适用门店上）
-	 */
-	@ApiListField("pid_shops")
-	@ApiField("pid_shop_info")
-	private List<PidShopInfo> pidShops;
+    /**
+     * 招商pid和pid对应的门店列表（对于品牌商，此字段必填，活动和券的适用门店为空。对于商圈，此字段需为空，门店需要填在活动和券的适用门店上）
+     */
+    @JSONField(name = "pid_shops", alternateNames = "pidShops")
+    private List<PidShopInfo> pidShops;
 
-	/**
-	 * 招商开始时间
-	 */
-	@ApiField("start_time")
-	private Date startTime;
+    /**
+     * 招商开始时间
+     */
+    @JSONField(name = "start_time", alternateNames = "startTime")
+    private Date startTime;
 
-	public Date getEndTime() {
-		return this.endTime;
-	}
-	public void setEndTime(Date endTime) {
-		this.endTime = endTime;
-	}
+    public Date getEndTime() {
+        return this.endTime;
+    }
 
-	public Boolean getExcludeConstraintShops() {
-		return this.excludeConstraintShops;
-	}
-	public void setExcludeConstraintShops(Boolean excludeConstraintShops) {
-		this.excludeConstraintShops = excludeConstraintShops;
-	}
+    public void setEndTime(Date endTime) {
+        this.endTime = endTime;
+    }
 
-	public List<PidShopInfo> getPidShops() {
-		return this.pidShops;
-	}
-	public void setPidShops(List<PidShopInfo> pidShops) {
-		this.pidShops = pidShops;
-	}
+    public Boolean getExcludeConstraintShops() {
+        return this.excludeConstraintShops;
+    }
 
-	public Date getStartTime() {
-		return this.startTime;
-	}
-	public void setStartTime(Date startTime) {
-		this.startTime = startTime;
-	}
+    public void setExcludeConstraintShops(Boolean excludeConstraintShops) {
+        this.excludeConstraintShops = excludeConstraintShops;
+    }
+
+    public List<PidShopInfo> getPidShops() {
+        return this.pidShops;
+    }
+
+    public void setPidShops(List<PidShopInfo> pidShops) {
+        this.pidShops = pidShops;
+    }
+
+    public Date getStartTime() {
+        return this.startTime;
+    }
+
+    public void setStartTime(Date startTime) {
+        this.startTime = startTime;
+    }
 
 }

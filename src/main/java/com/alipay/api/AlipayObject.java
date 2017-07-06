@@ -17,7 +17,7 @@ public abstract class AlipayObject implements Serializable {
     private static final long serialVersionUID = 1L;
     /**
      * 身份标识
-     */
+     */@ApiModelProperty(notes = " 身份标识")
     @NotNull(groups = {AppAuth.class})
     private Identity identity;
 

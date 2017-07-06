@@ -1,5 +1,6 @@
 package com.alipay.api.domain;
 
+import com.alibaba.fastjson.annotation.*;
 import com.alipay.api.AlipayObject;
 import com.alipay.api.internal.mapping.ApiField;
 import io.swagger.annotations.*;
@@ -23,8 +24,8 @@ public class KoubeiMarketingDataSmartactivityForecastModel extends AlipayObject 
     /**
      * 活动配置CODE
      */
+    @JSONField(name = "config_code", alternateNames = "configCode")
     @ApiModelProperty(notes = " 活动配置CODE")
-    @ApiField("config_code")
     private String configCode;
 
     /**
@@ -35,8 +36,8 @@ public class KoubeiMarketingDataSmartactivityForecastModel extends AlipayObject 
      * COMPOSED_ACTIVITY 方案组诊断
      * 当入参为TRADE_RATE和USER_COUNT时暂时不支持预测，会返回错误码UNSUPPORT_PARAMETER
      */
+    @JSONField(name = "diagnose_code", alternateNames = "diagnoseCode")
     @ApiModelProperty(notes = " 诊断结果CODE，目前有如下四个值TRADE_RATE	流失会员占比高USER_COUNT	会员数量少REPAY_RATE	复购率低COMPOSED_ACTIVITY 方案组诊断当入参为TRADE_RATE和USER_COUNT时暂时不支持预测，会返回错误码UNSUPPORT_PARAMETER")
-    @ApiField("diagnose_code")
     private String diagnoseCode;
 
     /**
@@ -52,8 +53,8 @@ public class KoubeiMarketingDataSmartactivityForecastModel extends AlipayObject 
      * commission_rate:口碑客分佣比例
      * 注意：对于消费送数据，min_consume/min_cost/worth_value是必填的且必须成组出现，对于诊断码为COMPOSED_ACTIVITY的预测，必须传入全量数据，并且各个参数使用竖线分隔多个值的场景
      */
+    @JSONField(name = "ext_info", alternateNames = "extInfo")
     @ApiModelProperty(notes = " 可选参数有如下几个：worth_value:奖品面额,可以阶梯送数据（示例：10|20|30）单位：分min_consume:门槛,可以阶梯送数据（示例：100|200|300）单位：分voucher_valid_days:券有效期天数activity_valid_days:活动有效期天数min_cost:领券门槛,可以阶梯送数据（示例：100|200|300）单位：分unconsume_days:会员流失天数crowd_group:人群对象consume_code:消费送活动形式包含commission_rate:口碑客分佣比例注意：对于消费送数据，min_consume/min_cost/worth_value是必填的且必须成组出现，对于诊断码为COMPOSED_ACTIVITY的预测，必须传入全量数据，并且各个参数使用竖线分隔多个值的场景")
-    @ApiField("ext_info")
     private ExtInfo extInfo;
 
     @ApiModel
@@ -62,56 +63,56 @@ public class KoubeiMarketingDataSmartactivityForecastModel extends AlipayObject 
         /**
          * 奖品面额,可以阶梯送数据（示例：10|20|30）单位：分
          */
+        @JSONField(name = "worth_value", alternateNames = "worthValue")
         @ApiModelProperty(notes = " 奖品面额,可以阶梯送数据（示例：10|20|30）单位：分")
-        @ApiField("worth_value")
         private String worthValue;
         /**
          * 门槛,可以阶梯送数据（示例：100|200|300）单位：分
          */
+        @JSONField(name = "min_consume", alternateNames = "minConsume")
         @ApiModelProperty(notes = " 门槛,可以阶梯送数据（示例：100|200|300）单位：分")
-        @ApiField("min_consume")
         private String minConsume;
         /**
          * 券有效期天数
          */
+        @JSONField(name = "voucher_valid_days", alternateNames = "voucherValidDays")
         @ApiModelProperty(notes = " 券有效期天数")
-        @ApiField(value = "voucher_valid_days",formatter = STRING_VALUE)
         private Integer voucherValidDays;
         /**
          * 活动有效期天数
          */
+        @JSONField(name = "activity_valid_days", alternateNames = "activityValidDays")
         @ApiModelProperty(notes = " 活动有效期天数")
-        @ApiField(value = "activity_valid_days",formatter = STRING_VALUE)
         private Integer activityValidDays;
         /**
          * 领券门槛,可以阶梯送数据（示例：100|200|300）单位：分
          */
+        @JSONField(name = "min_cost", alternateNames = "minCost")
         @ApiModelProperty(notes = " 领券门槛,可以阶梯送数据（示例：100|200|300）单位：分")
-        @ApiField("min_cost")
         private String minCost;
         /**
          * 会员流失天数
          */
+        @JSONField(name = "unconsume_days", alternateNames = "unconsumeDays")
         @ApiModelProperty(notes = " 会员流失天数")
-        @ApiField(value = "unconsume_days",formatter = STRING_VALUE)
         private Integer unconsumeDays;
         /**
          * 人群对象
          */
+        @JSONField(name = "crowd_group", alternateNames = "crowdGroup")
         @ApiModelProperty(notes = " 人群对象")
-        @ApiField("crowd_group")
         private String crowdGroup;
         /**
          * 消费送活动形式包含
          */
+        @JSONField(name = "consume_code", alternateNames = "consumeCode")
         @ApiModelProperty(notes = " 消费送活动形式包含")
-        @ApiField("consume_code")
         private String consumeCode;
         /**
          * 口碑客分佣比例
          */
+        @JSONField(name = "commission_rate", alternateNames = "commissionRate")
         @ApiModelProperty(notes = " 口碑客分佣比例")
-        @ApiField(value = "commission_rate",formatter = STRING_VALUE)
         private BigDecimal commissionRate;
 
         public String getWorthValue() {

@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.alipay.api.AlipayApiException;
 import com.alipay.api.AlipayConstants;
 import com.alipay.api.AlipayRequest;
@@ -35,18 +36,25 @@ public class JsonConverter implements Converter {
 
     public <T extends AlipayResponse> T toResponse(String rsp, Class<T> clazz)
                                                                               throws AlipayApiException {
-        JSONReader reader = new JSONValidatingReader(new ExceptionErrorListener());
-        Object rootObj = reader.read(rsp);
-        if (rootObj instanceof Map<?, ?>) {
-            Map<?, ?> rootJson = (Map<?, ?>) rootObj;
-            Collection<?> values = rootJson.values();
-            for (Object rspObj : values) {
-                if (rspObj instanceof Map<?, ?>) {
-                    Map<?, ?> rspJson = (Map<?, ?>) rspObj;
-                    return fromJson(rspJson, clazz);
-                }
+        JSONObject json = JSON.parseObject(rsp);
+        for(Object value : json.values()){
+            if(value instanceof JSON){
+                return JSON.toJavaObject((JSON) value,clazz);
             }
         }
+//        return JSON.parseObject(rsp,clazz);
+//        JSONReader reader = new JSONValidatingReader(new ExceptionErrorListener());
+//        Object rootObj = reader.read(rsp);
+//        if (rootObj instanceof Map<?, ?>) {
+//            Map<?, ?> rootJson = (Map<?, ?>) rootObj;
+//            Collection<?> values = rootJson.values();
+//            for (Object rspObj : values) {
+//                if (rspObj instanceof Map<?, ?>) {
+//                    Map<?, ?> rspJson = (Map<?, ?>) rspObj;
+//                    return fromJson(rspJson, clazz);
+//                }
+//            }
+//        }
         return null;
     }
 
