@@ -25,6 +25,7 @@ import com.alipay.api.internal.util.StringUtils;
 import com.alipay.api.internal.util.json.ExceptionErrorListener;
 import com.alipay.api.internal.util.json.JSONReader;
 import com.alipay.api.internal.util.json.JSONValidatingReader;
+import com.yazuo.xiaoya.common.json.NormalizerJSONString;
 
 /**
  * JSON格式转换器。
@@ -34,9 +35,11 @@ import com.alipay.api.internal.util.json.JSONValidatingReader;
  */
 public class JsonConverter implements Converter {
 
+
+
     public <T extends AlipayResponse> T toResponse(String rsp, Class<T> clazz)
-                                                                              throws AlipayApiException {
-        JSONObject json = JSON.parseObject(rsp);
+                                                                                throws AlipayApiException {
+        JSONObject json = JSON.parseObject(new String(new NormalizerJSONString(rsp).getNormalizerData()));
         for(Object value : json.values()){
             if(value instanceof JSON){
                 return JSON.toJavaObject((JSON) value,clazz);
@@ -65,7 +68,7 @@ public class JsonConverter implements Converter {
      * @param json JSON格式的数据
      * @param clazz 泛型领域类型
      * @return 领域对象
-     * @throws TopException
+     * @throws
      */
     public <T> T fromJson(final Map<?, ?> json, Class<T> clazz) throws AlipayApiException {
         return Converters.convert(clazz, new Reader() {
