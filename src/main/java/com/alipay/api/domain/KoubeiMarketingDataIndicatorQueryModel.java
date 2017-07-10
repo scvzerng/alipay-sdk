@@ -110,7 +110,7 @@ public class KoubeiMarketingDataIndicatorQueryModel extends AlipayObject {
         /**
          * 门店ID列表
          */
-        @JSONField(name = "store_ids", alternateNames = "storeIds")
+        @JSONField(name = "store_Ids", alternateNames = "storeIds")
         @ApiModelProperty(notes = "门店ID列表")
         private String storeIds;
 
