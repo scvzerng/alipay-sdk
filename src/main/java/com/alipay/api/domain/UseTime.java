@@ -1,5 +1,6 @@
 package com.alipay.api.domain;
 
+import com.alibaba.fastjson.annotation.*;
 import com.alipay.api.AlipayObject;
 import com.alipay.api.internal.mapping.ApiField;
 
@@ -16,7 +17,6 @@ public class UseTime extends AlipayObject {
 	/**
 	 * 券可用时段时间维度，目前支持周(W)
 	 */
-	@ApiField("dimension")
 	private String dimension;
 
 	/**
@@ -25,7 +25,6 @@ public class UseTime extends AlipayObject {
 如, "16:00:00,20:00:00^21:00:00,22:00:00"表示16点至20点，21点至22点可用
 时间段不可重叠
 	 */
-	@ApiField("times")
 	private String times;
 
 	/**
@@ -33,7 +32,6 @@ public class UseTime extends AlipayObject {
 周维度的取值范围1-7(周一至周日)，多个可用时段用逗号分隔
 如"1,3,5"，对应周一，周三，周五可用
 	 */
-	@ApiField("values")
 	private String values;
 
 	public String getDimension() {

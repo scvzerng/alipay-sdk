@@ -1,5 +1,6 @@
 package com.alipay.api.domain;
 
+import com.alibaba.fastjson.annotation.*;
 import com.alipay.api.AlipayObject;
 import com.alipay.api.internal.mapping.ApiField;
 
@@ -18,7 +19,6 @@ public class ForbbidenTime extends AlipayObject {
 不可用区间起止日期用逗号分隔，多个区间之间用^分隔
 如"2016-05-01,2016-05-03^2016-10-01,2016-10-07"表示2016年5月1日至5月3日，10月1日至10月7日券不可用
 	 */
-	@ApiField("days")
 	private String days;
 
 	public String getDays() {

@@ -2,6 +2,7 @@ package com.alipay.api.domain;
 
 import java.util.List;
 
+import com.alibaba.fastjson.annotation.*;
 import com.alipay.api.AlipayObject;
 import com.alipay.api.internal.mapping.ApiField;
 import com.alipay.api.internal.mapping.ApiListField;
@@ -19,14 +20,11 @@ public class PidShopInfo extends AlipayObject {
 	/**
 	 * 商户pid
 	 */
-	@ApiField("pid")
 	private String pid;
 
 	/**
 	 * pid下的门店列表
-	 */
-	@ApiListField("shop_ids")
-	@ApiField("string")
+	 */@JSONField(name = "shop_ids", alternateNames = "shopIds")
 	private List<String> shopIds;
 
 	public String getPid() {

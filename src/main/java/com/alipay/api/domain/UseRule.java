@@ -2,6 +2,7 @@ package com.alipay.api.domain;
 
 import java.util.List;
 
+import com.alibaba.fastjson.annotation.*;
 import com.alipay.api.AlipayObject;
 import com.alipay.api.internal.mapping.ApiField;
 import com.alipay.api.internal.mapping.ApiListField;
@@ -18,26 +19,22 @@ public class UseRule extends AlipayObject {
 
 	/**
 	 * 扩展属性，无需设置
-	 */
-	@ApiField("ext_info")
+	 */@JSONField(name = "ext_info", alternateNames = "extInfo")
 	private String extInfo;
 
 	/**
 	 * 券的不可用时间
-	 */
-	@ApiField("forbidden_time")
+	 */@JSONField(name = "forbidden_time", alternateNames = "forbiddenTime")
 	private ForbbidenTime forbiddenTime;
 
 	/**
 	 * 券核销的最低消费门槛，单位元
-	 */
-	@ApiField("min_consume")
+	 */@JSONField(name = "min_consume", alternateNames = "minConsume")
 	private String minConsume;
 
 	/**
 	 * 券买单跳转链接
-	 */
-	@ApiField("pay_redirect_url")
+	 */@JSONField(name = "pay_redirect_url", alternateNames = "payRedirectUrl")
 	private String payRedirectUrl;
 
 	/**
@@ -45,16 +42,12 @@ public class UseRule extends AlipayObject {
 仅品牌商发起的招商活动可为空
 直发奖类型活动必须与活动适用门店一致
 最多支持10w家门店
-	 */
-	@ApiListField("suit_shops")
-	@ApiField("string")
+	 */@JSONField(name = "suit_shops", alternateNames = "suitShops")
 	private List<String> suitShops;
 
 	/**
 	 * 券可用时间段
-	 */
-	@ApiListField("use_time")
-	@ApiField("use_time")
+	 */@JSONField(name = "use_time", alternateNames = "useTime")
 	private List<UseTime> useTime;
 
 	public String getExtInfo() {
