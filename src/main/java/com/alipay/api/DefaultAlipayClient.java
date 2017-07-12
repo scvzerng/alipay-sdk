@@ -13,6 +13,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.TimeZone;
 
+import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alipay.api.internal.parser.json.ObjectJsonParser;
 import com.alipay.api.internal.parser.xml.ObjectXmlParser;
 import com.alipay.api.internal.util.AlipayEncrypt;
@@ -100,18 +101,18 @@ public class DefaultAlipayClient implements AlipayClient {
         this.encryptKey = encryptKey;
     }
 
-    public <T extends AlipayResponse> T execute(AlipayRequest<T> request) throws AlipayApiException {
-        return execute(request, null);
+    public <T extends AlipayResponse> T execute(AlipayRequest<T> request, SerializerFeature... features) throws AlipayApiException {
+        return execute(request, null,features);
     }
 
     public <T extends AlipayResponse> T execute(AlipayRequest<T> request,
-                                                String accessToken) throws AlipayApiException {
+                                                String accessToken, SerializerFeature... features) throws AlipayApiException {
 
-        return execute(request, accessToken, null);
+        return execute(request, accessToken, null,features);
     }
 
     public <T extends AlipayResponse> T execute(AlipayRequest<T> request, String accessToken,
-                                                String appAuthToken) throws AlipayApiException {
+                                                String appAuthToken, SerializerFeature... features) throws AlipayApiException {
 
         AlipayParser<T> parser = null;
         if (AlipayConstants.FORMAT_XML.equals(this.format)) {
@@ -120,16 +121,16 @@ public class DefaultAlipayClient implements AlipayClient {
             parser = new ObjectJsonParser<T>(request.getResponseClass());
         }
 
-        return _execute(request, parser, accessToken, appAuthToken);
+        return _execute(request, parser, accessToken, appAuthToken,features);
     }
 
-    public <T extends AlipayResponse> T pageExecute(AlipayRequest<T> request) throws AlipayApiException {
-        return pageExecute(request, "POST");
+    public <T extends AlipayResponse> T pageExecute(AlipayRequest<T> request, SerializerFeature... features) throws AlipayApiException {
+        return pageExecute(request, "POST",features);
     }
 
     public <T extends AlipayResponse> T pageExecute(AlipayRequest<T> request,
-                                                    String httpMethod) throws AlipayApiException {
-        RequestParametersHolder requestHolder = getRequestHolderWithSign(request, null, null);
+                                                    String httpMethod,SerializerFeature... features) throws AlipayApiException {
+        RequestParametersHolder requestHolder = getRequestHolderWithSign(request, null, null,features);
         // 打印完整请求报文
         if (AlipayLogger.isBizDebugEnabled()) {
             AlipayLogger.logBizDebug(getRedirectUrl(requestHolder));
@@ -152,8 +153,8 @@ public class DefaultAlipayClient implements AlipayClient {
         return rsp;
     }
 
-    public <T extends AlipayResponse> T sdkExecute(AlipayRequest<T> request) throws AlipayApiException {
-        RequestParametersHolder requestHolder = getRequestHolderWithSign(request, null, null);
+    public <T extends AlipayResponse> T sdkExecute(AlipayRequest<T> request,SerializerFeature... features) throws AlipayApiException {
+        RequestParametersHolder requestHolder = getRequestHolderWithSign(request, null, null,features);
         // 打印完整请求报文
         if (AlipayLogger.isBizDebugEnabled()) {
             AlipayLogger.logBizDebug(getSdkParams(requestHolder));
@@ -231,7 +232,7 @@ public class DefaultAlipayClient implements AlipayClient {
      */
     private <T extends AlipayResponse> RequestParametersHolder getRequestHolderWithSign(AlipayRequest<?> request,
                                                                                         String accessToken,
-                                                                                        String appAuthToken) throws AlipayApiException {
+                                                                                        String appAuthToken, SerializerFeature... features) throws AlipayApiException {
         RequestParametersHolder requestHolder = new RequestParametersHolder();
         AlipayHashMap appParams = new AlipayHashMap(request.getTextParams());
 
@@ -241,7 +242,7 @@ public class DefaultAlipayClient implements AlipayClient {
                 && StringUtils.isEmpty(appParams.get(AlipayConstants.BIZ_CONTENT_KEY))
                 && request.getBizModel() != null) {
                 appParams.put(AlipayConstants.BIZ_CONTENT_KEY,
-                    new JSONWriter().write(request.getBizModel(), true));
+                    JSONWriter.write(request.getBizModel(),features));
             }
         } catch (NoSuchMethodException e) {
             // 找不到getBizContent则什么都不做
@@ -399,9 +400,9 @@ public class DefaultAlipayClient implements AlipayClient {
 
     private <T extends AlipayResponse> T _execute(AlipayRequest<T> request, AlipayParser<T> parser,
                                                   String authToken,
-                                                  String appAuthToken) throws AlipayApiException {
+                                                  String appAuthToken, SerializerFeature... features) throws AlipayApiException {
 
-        Map<String, Object> rt = doPost(request, authToken, appAuthToken);
+        Map<String, Object> rt = doPost(request, authToken, appAuthToken,features);
         if (rt == null) {
             return null;
         }
@@ -442,16 +443,16 @@ public class DefaultAlipayClient implements AlipayClient {
      * 
      * @param request
      * @param accessToken
-     * @param signType
+     * @param
      * @return
      * @throws AlipayApiException
      */
     private <T extends AlipayResponse> Map<String, Object> doPost(AlipayRequest<T> request,
                                                                   String accessToken,
-                                                                  String appAuthToken) throws AlipayApiException {
+                                                                  String appAuthToken,SerializerFeature... features) throws AlipayApiException {
         Map<String, Object> result = new HashMap<String, Object>();
         RequestParametersHolder requestHolder = getRequestHolderWithSign(request, accessToken,
-            appAuthToken);
+            appAuthToken,features);
 
         String url = getRequestUrl(requestHolder);
 

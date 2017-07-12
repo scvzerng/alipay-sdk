@@ -1,5 +1,6 @@
 package com.alipay.api.domain;
 
+import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.annotation.*;
 import com.alipay.api.AlipayObject;
 import com.alipay.api.internal.mapping.ApiField;
@@ -17,13 +18,13 @@ public class PublishChannel extends AlipayObject {
     /**
      * 当type为MERCHANT_CROWD时，config需填入口令送的密码和图片，样例如下："config":"{\"PASSWORD\":\"口令送密码\",\"BACKGROUND_LOGO\":\"1T8Pp00AT7eo9NoAJkMR3AAAACMAAQEC\"}"
      */
-    private String config;
+    private JSONObject config;
 
     /**
      * 扩展信息，无需配置
      */
     @JSONField(name = "ext_info", alternateNames = "extInfo")
-    private String extInfo;
+    private JSONObject extInfo;
 
     /**
      * 渠道名称
@@ -41,19 +42,19 @@ public class PublishChannel extends AlipayObject {
      */
     private String type;
 
-    public String getConfig() {
-        return this.config;
+    public JSONObject getConfig() {
+        return config;
     }
 
-    public void setConfig(String config) {
+    public void setConfig(JSONObject config) {
         this.config = config;
     }
 
-    public String getExtInfo() {
-        return this.extInfo;
+    public JSONObject getExtInfo() {
+        return extInfo;
     }
 
-    public void setExtInfo(String extInfo) {
+    public void setExtInfo(JSONObject extInfo) {
         this.extInfo = extInfo;
     }
 

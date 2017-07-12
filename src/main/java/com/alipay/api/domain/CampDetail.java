@@ -3,6 +3,7 @@ package com.alipay.api.domain;
 import java.util.Date;
 import java.util.List;
 
+import com.alibaba.fastjson.JSONObject;
 import com.alipay.api.AlipayObject;
 import com.alipay.api.internal.mapping.ApiField;
 import com.alipay.api.internal.mapping.ApiListField;
@@ -64,7 +65,7 @@ public class CampDetail extends AlipayObject {
 	 * 扩展参数
 	 */
 	@ApiField("ext_info")
-	private String extInfo;
+	private JSONObject extInfo;
 
 	/**
 	 * 活动id
@@ -116,6 +117,7 @@ public class CampDetail extends AlipayObject {
 	@ApiField("type")
 	private String type;
 
+
 	public List<ActivityOrderDTO> getActivityOrders() {
 		return this.activityOrders;
 	}
@@ -165,10 +167,11 @@ public class CampDetail extends AlipayObject {
 		this.endTime = endTime;
 	}
 
-	public String getExtInfo() {
-		return this.extInfo;
+	public JSONObject getExtInfo() {
+		return extInfo;
 	}
-	public void setExtInfo(String extInfo) {
+
+	public void setExtInfo(JSONObject extInfo) {
 		this.extInfo = extInfo;
 	}
 

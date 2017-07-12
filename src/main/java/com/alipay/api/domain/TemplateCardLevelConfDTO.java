@@ -1,7 +1,12 @@
 package com.alipay.api.domain;
 
+import com.alibaba.fastjson.annotation.*;
 import com.alipay.api.AlipayObject;
 import com.alipay.api.internal.mapping.ApiField;
+import io.swagger.annotations.*;
+import org.hibernate.validator.constraints.Length;
+
+import java.io.Serializable;
 
 /**
  * 会员卡级别配置信息
@@ -9,60 +14,70 @@ import com.alipay.api.internal.mapping.ApiField;
  * @author auto create
  * @since 1.0, 2016-12-28 15:26:46
  */
-public class TemplateCardLevelConfDTO extends AlipayObject {
+@ApiModel(description = " 会员卡级别配置信息")
+public class TemplateCardLevelConfDTO implements Serializable {
 
-	private static final long serialVersionUID = 5566766891346867557L;
+    /**
+     * 会员级别 该级别和开卡接口中的levle要一致
+     */
+    @ApiModelProperty(notes = " 会员级别 该级别和开卡接口中的levle要一致")
+    @Length(min = 1,max = 64)
+    private String level;
 
-	/**
-	 * 会员级别 该级别和开卡接口中的levle要一致
-	 */
-	@ApiField("level")
-	private String level;
+    /**
+     * 会员级别描述
+     */
+    @ApiModelProperty(notes = " 会员级别描述")
+    @JSONField(alternateNames = "levelDesc", name = "level_desc")
+    @Length(min = 1,max = 4000)
+    private String levelDesc;
 
-	/**
-	 * 会员级别描述
-	 */
-	@ApiField("level_desc")
-	private String levelDesc;
+    /**
+     * 会员级别对应icon， 通过接口（alipay.offline.material.image.upload）上传图片
+     */
+    @ApiModelProperty(notes = " 会员级别对应icon， 通过接口（alipay.offline.material.image.upload）上传图片")
+    @JSONField(alternateNames = "levelIcon", name = "level_icon")
+    @Length(min = 1,max = 64)
+    private String levelIcon;
 
-	/**
-	 * 会员级别对应icon， 通过接口（alipay.offline.material.image.upload）上传图片
-	 */
-	@ApiField("level_icon")
-	private String levelIcon;
+    /**
+     * 会员级别显示名称
+     */
+    @ApiModelProperty(notes = " 会员级别显示名称")
+    @JSONField(alternateNames = "levelShowName", name = "level_show_name")
+    @Length(min = 1,max = 64)
+    private String levelShowName;
 
-	/**
-	 * 会员级别显示名称
-	 */
-	@ApiField("level_show_name")
-	private String levelShowName;
+    public String getLevel() {
+        return this.level;
+    }
 
-	public String getLevel() {
-		return this.level;
-	}
-	public void setLevel(String level) {
-		this.level = level;
-	}
+    public void setLevel(String level) {
+        this.level = level;
+    }
 
-	public String getLevelDesc() {
-		return this.levelDesc;
-	}
-	public void setLevelDesc(String levelDesc) {
-		this.levelDesc = levelDesc;
-	}
+    public String getLevelDesc() {
+        return this.levelDesc;
+    }
 
-	public String getLevelIcon() {
-		return this.levelIcon;
-	}
-	public void setLevelIcon(String levelIcon) {
-		this.levelIcon = levelIcon;
-	}
+    public void setLevelDesc(String levelDesc) {
+        this.levelDesc = levelDesc;
+    }
 
-	public String getLevelShowName() {
-		return this.levelShowName;
-	}
-	public void setLevelShowName(String levelShowName) {
-		this.levelShowName = levelShowName;
-	}
+    public String getLevelIcon() {
+        return this.levelIcon;
+    }
+
+    public void setLevelIcon(String levelIcon) {
+        this.levelIcon = levelIcon;
+    }
+
+    public String getLevelShowName() {
+        return this.levelShowName;
+    }
+
+    public void setLevelShowName(String levelShowName) {
+        this.levelShowName = levelShowName;
+    }
 
 }

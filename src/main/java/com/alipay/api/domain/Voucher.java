@@ -3,6 +3,7 @@ package com.alipay.api.domain;
 import java.util.Date;
 import java.util.List;
 
+import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.annotation.*;
 import com.alipay.api.AlipayObject;
 import com.alipay.api.internal.mapping.ApiField;
@@ -81,7 +82,7 @@ public class Voucher extends AlipayObject {
      * 券的扩展信息
      */
     @JSONField(name = "ext_info", alternateNames = "extInfo")
-    private String extInfo;
+    private JSONObject extInfo;
 
     /**
      * 单品信息
@@ -271,11 +272,11 @@ public class Voucher extends AlipayObject {
         this.endTime = endTime;
     }
 
-    public String getExtInfo() {
-        return this.extInfo;
+    public JSONObject getExtInfo() {
+        return extInfo;
     }
 
-    public void setExtInfo(String extInfo) {
+    public void setExtInfo(JSONObject extInfo) {
         this.extInfo = extInfo;
     }
 

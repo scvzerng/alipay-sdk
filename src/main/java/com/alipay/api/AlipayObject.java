@@ -8,7 +8,7 @@ import java.io.Serializable;
 
 /**
  * Base Data Structure.
- * 
+ *
  * @author carver.gu
  * @since 1.0, Apr 11, 2010
  */
@@ -18,6 +18,7 @@ public abstract class AlipayObject implements Serializable {
     /**
      * 身份标识
      */
+    @ApiModelProperty(notes = " 身份标识")
     @NotNull(groups = {AppAuth.class})
     private Identity identity;
 
