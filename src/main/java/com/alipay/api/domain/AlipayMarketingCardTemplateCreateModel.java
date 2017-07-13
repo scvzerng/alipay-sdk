@@ -96,6 +96,7 @@ public class AlipayMarketingCardTemplateCreateModel extends AlipayObject {
      */
     @ApiModelProperty(notes = " 字段规则列表，会员卡开卡过程中，会员卡信息的生成规则， 例如：卡有效期为开卡后两年内有效，则设置为：DATE_IN_FUTURE")
     @JSONField(alternateNames = "fieldRuleList", name = "field_rule_list")
+    @NotNull
     private List<TemplateFieldRuleDTO> fieldRuleList;
 
     /**
