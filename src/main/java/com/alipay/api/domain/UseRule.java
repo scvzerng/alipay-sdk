@@ -2,6 +2,7 @@ package com.alipay.api.domain;
 
 import java.util.List;
 
+import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.annotation.*;
 import com.alipay.api.AlipayObject;
 import com.alipay.api.internal.mapping.ApiField;
@@ -20,7 +21,7 @@ public class UseRule extends AlipayObject {
 	/**
 	 * 扩展属性，无需设置
 	 */@JSONField(name = "ext_info", alternateNames = "extInfo")
-	private String extInfo;
+	private JSONObject extInfo;
 
 	/**
 	 * 券的不可用时间
@@ -50,10 +51,11 @@ public class UseRule extends AlipayObject {
 	 */@JSONField(name = "use_time", alternateNames = "useTime")
 	private List<UseTime> useTime;
 
-	public String getExtInfo() {
-		return this.extInfo;
+	public JSONObject getExtInfo() {
+		return extInfo;
 	}
-	public void setExtInfo(String extInfo) {
+
+	public void setExtInfo(JSONObject extInfo) {
 		this.extInfo = extInfo;
 	}
 

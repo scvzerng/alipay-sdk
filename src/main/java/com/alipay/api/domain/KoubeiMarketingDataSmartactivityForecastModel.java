@@ -8,7 +8,6 @@ import io.swagger.annotations.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
-import static com.alipay.api.internal.util.json.JSONWriter.STRING_VALUE;
 
 /**
  * 商户智能活动效果预测接口
