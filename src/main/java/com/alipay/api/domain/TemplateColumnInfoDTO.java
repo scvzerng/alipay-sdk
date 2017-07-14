@@ -7,6 +7,7 @@ import com.yazuo.xiaoya.common.annotation.validate.EnumCheck;
 import io.swagger.annotations.*;
 import org.hibernate.validator.constraints.Length;
 
+import javax.validation.Valid;
 import java.io.Serializable;
 
 /**
@@ -36,9 +37,10 @@ public class TemplateColumnInfoDTO implements Serializable {
      */
     @ApiModelProperty(notes = " 扩展信息")
     @JSONField(alternateNames = "moreInfo", name = "more_info")
+    @Valid
     private MoreInfoDTO moreInfo;
     /**
-     * 栏目的标题
+         * 栏目的标题
      */
     @ApiModelProperty(notes = " 栏目的标题")
     @Length(min = 1,max = 16)

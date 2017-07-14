@@ -11,6 +11,7 @@ import io.swagger.annotations.*;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 
+import javax.validation.Valid;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
 
@@ -79,6 +80,7 @@ public class AlipayMarketingCardTemplateCreateModel extends AlipayObject {
      */
     @ApiModelProperty(notes = " 卡级别配置")
     @JSONField(alternateNames = "cardLevelConf", name = "card_level_conf")
+    @Valid
     private List<TemplateCardLevelConfDTO> cardLevelConf;
 
 
@@ -88,6 +90,7 @@ public class AlipayMarketingCardTemplateCreateModel extends AlipayObject {
     @ApiModelProperty(notes = " 栏位信息")
     @JSONField(alternateNames = "columnInfoList", name = "column_info_list")
     @NotNull
+    @Valid
     private List<TemplateColumnInfoDTO> columnInfoList;
 
     /**
@@ -97,6 +100,7 @@ public class AlipayMarketingCardTemplateCreateModel extends AlipayObject {
     @ApiModelProperty(notes = " 字段规则列表，会员卡开卡过程中，会员卡信息的生成规则， 例如：卡有效期为开卡后两年内有效，则设置为：DATE_IN_FUTURE")
     @JSONField(alternateNames = "fieldRuleList", name = "field_rule_list")
     @NotNull
+    @Valid
     private List<TemplateFieldRuleDTO> fieldRuleList;
 
     /**
@@ -104,6 +108,7 @@ public class AlipayMarketingCardTemplateCreateModel extends AlipayObject {
      */
     @ApiModelProperty(notes = " 会员卡用户领卡配置，在门店等渠道露出领卡入口时，需要部署的商户领卡H5页面地址")
     @JSONField(alternateNames = "openCardConf", name = "open_card_conf")
+    @Valid
     private TemplateOpenCardConfDTO openCardConf;
 
     /**
@@ -111,6 +116,7 @@ public class AlipayMarketingCardTemplateCreateModel extends AlipayObject {
      */
     @ApiModelProperty(notes = " 卡模板投放渠道")
     @JSONField(alternateNames = "pubChannels", name = "pub_channels")
+    @Valid
     private List<PubChannelDTO> pubChannels;
 
 
@@ -137,6 +143,7 @@ public class AlipayMarketingCardTemplateCreateModel extends AlipayObject {
      */
     @ApiModelProperty(notes = " 权益信息， 1、在卡包的卡详情页面会自动添加权益栏位，展现会员卡特权， 2、如果添加门店渠道，则可在门店页展现会员卡的权益")
     @JSONField(alternateNames = "templateBenefitInfo", name = "template_benefit_info")
+    @Valid
     private List<TemplateBenefitInfoDTO> templateBenefitInfo;
 
     /**
@@ -144,6 +151,7 @@ public class AlipayMarketingCardTemplateCreateModel extends AlipayObject {
      */
     @ApiModelProperty(notes = " 模板样式信息")
     @JSONField(alternateNames = "templateStyleInfo", name = "template_style_info")
+    @Valid
     private TemplateStyleInfoDTO templateStyleInfo;
     /**
      * 商户动态码通知参数配置：
@@ -152,6 +160,7 @@ public class AlipayMarketingCardTemplateCreateModel extends AlipayObject {
      */
     @ApiModelProperty(notes = " 商户动态码通知参数配置： 当write_off_type指定为商户动态码mdbarcode或mdqrcode时必填； 在此字段配置用户打开会员卡时支付宝通知商户生成动态码（发码）的通知参数，如接收通知地址等。")
     @JSONField(alternateNames = "mdcodeNotifyConf", name = "mdcode_notify_conf")
+    @Valid
     private TemplateMdcodeNotifyConfDTO mdcodeNotifyConf;
 
     public String getBizNoPrefix() {
