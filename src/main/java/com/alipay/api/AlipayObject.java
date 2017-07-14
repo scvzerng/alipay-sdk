@@ -1,5 +1,6 @@
 package com.alipay.api;
 
+import com.alibaba.fastjson.annotation.JSONField;
 import com.yazuo.xiaoya.common.Identity;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -19,6 +20,7 @@ public abstract class AlipayObject implements Serializable {
      * 身份标识
      */
     @NotNull(groups = {AppAuth.class})
+    @JSONField(serialize = false)
     private Identity identity;
 
     public Identity getIdentity() {
