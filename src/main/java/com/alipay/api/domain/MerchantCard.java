@@ -1,5 +1,6 @@
 package com.alipay.api.domain;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 import com.alibaba.fastjson.annotation.*;
@@ -8,6 +9,7 @@ import com.alipay.api.internal.mapping.ApiField;
 import com.yazuo.xiaoya.common.annotation.validate.EndDate;
 import io.swagger.annotations.*;
 
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
 
@@ -26,7 +28,8 @@ public class MerchantCard extends AlipayObject {
      * 资金卡余额，单位：元，精确到小数点后两位。
      */
     @ApiModelProperty(notes = " 资金卡余额，单位：元，精确到小数点后两位。")
-    private String balance;
+    @Digits(integer = 32,fraction = 2)
+    private BigDecimal balance;
 
     /**
      * 支付宝业务卡号
@@ -84,11 +87,11 @@ public class MerchantCard extends AlipayObject {
     @NotNull
     private Date validDate;
 
-    public String getBalance() {
-        return this.balance;
+    public BigDecimal getBalance() {
+        return balance;
     }
 
-    public void setBalance(String balance) {
+    public void setBalance(BigDecimal balance) {
         this.balance = balance;
     }
 
