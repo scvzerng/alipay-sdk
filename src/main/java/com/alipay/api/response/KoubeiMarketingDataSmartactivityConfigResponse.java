@@ -76,7 +76,7 @@ public class KoubeiMarketingDataSmartactivityConfigResponse extends AlipayRespon
      */
     @ApiModelProperty(notes = " 奖品面额门槛（阶梯状），消费满不同的金额可以使用不同的券,单位：分")
     @ApiField("min_consume")
-    private BigDecimal minConsume;
+    private String minConsume;
 
     /**
      * 领券门槛（阶梯状），消费满不同的金额发不同金额的券券
@@ -86,7 +86,7 @@ public class KoubeiMarketingDataSmartactivityConfigResponse extends AlipayRespon
      */
     @ApiModelProperty(notes = " 领券门槛（阶梯状），消费满不同的金额发不同金额的券券活动类型为消费送且不是消费送礼包时设置多营销工具之间不允许设置重复值单位：分")
     @ApiField("min_cost")
-    private BigDecimal minCost;
+    private String minCost;
 
     /**
      * 营销类型，只有在诊断码为SUPER_ITEM表示菜品营销时此字段才可能有值，多个值之间使用竖线|分隔
@@ -118,7 +118,7 @@ public class KoubeiMarketingDataSmartactivityConfigResponse extends AlipayRespon
      */
     @ApiModelProperty(notes = " 券面额，折扣券为折扣比例、立减为金额 单位：分")
     @ApiField("worth_value")
-    private BigDecimal worthValue;
+    private String worthValue;
 
     @ApiModel
 
@@ -208,13 +208,6 @@ public class KoubeiMarketingDataSmartactivityConfigResponse extends AlipayRespon
     }
 
 
-    public BigDecimal getMinCost() {
-        return minCost;
-    }
-
-    public void setMinCost(BigDecimal minCost) {
-        this.minCost = minCost;
-    }
 
     public void setItemId(String itemId) {
         this.itemId = itemId;
@@ -232,14 +225,21 @@ public class KoubeiMarketingDataSmartactivityConfigResponse extends AlipayRespon
         return this.itemName;
     }
 
-    public BigDecimal getMinConsume() {
+    public String getMinConsume() {
         return minConsume;
     }
 
-    public void setMinConsume(BigDecimal minConsume) {
+    public void setMinConsume(String minConsume) {
         this.minConsume = minConsume;
     }
 
+    public String getMinCost() {
+        return minCost;
+    }
+
+    public void setMinCost(String minCost) {
+        this.minCost = minCost;
+    }
 
     public void setProType(String proType) {
         this.proType = proType;
@@ -265,11 +265,11 @@ public class KoubeiMarketingDataSmartactivityConfigResponse extends AlipayRespon
         this.voucherValidDays = voucherValidDays;
     }
 
-    public BigDecimal getWorthValue() {
+    public String getWorthValue() {
         return worthValue;
     }
 
-    public void setWorthValue(BigDecimal worthValue) {
+    public void setWorthValue(String worthValue) {
         this.worthValue = worthValue;
     }
 }
