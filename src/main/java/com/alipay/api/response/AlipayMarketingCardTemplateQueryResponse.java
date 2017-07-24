@@ -21,7 +21,6 @@ import com.alipay.api.AlipayResponse;
  */
 public class AlipayMarketingCardTemplateQueryResponse extends AlipayResponse {
 
-	private static final long serialVersionUID = 2259778163317511347L;
 
 	/** 
 	 * 业务卡号前缀，由商户自定义
@@ -33,7 +32,7 @@ public class AlipayMarketingCardTemplateQueryResponse extends AlipayResponse {
 	 * 卡号长度
 	 */
 	@ApiField("biz_no_suffix_len")
-	private String bizNoSuffixLen;
+	private Integer bizNoSuffixLen;
 
 	/** 
 	 * 卡等级配置
@@ -113,11 +112,12 @@ OUT_MEMBER_CARD：外部权益卡
 		return this.bizNoPrefix;
 	}
 
-	public void setBizNoSuffixLen(String bizNoSuffixLen) {
-		this.bizNoSuffixLen = bizNoSuffixLen;
+	public Integer getBizNoSuffixLen() {
+		return bizNoSuffixLen;
 	}
-	public String getBizNoSuffixLen( ) {
-		return this.bizNoSuffixLen;
+
+	public void setBizNoSuffixLen(Integer bizNoSuffixLen) {
+		this.bizNoSuffixLen = bizNoSuffixLen;
 	}
 
 	public void setCardLevelConfs(List<TemplateCardLevelConfDTO> cardLevelConfs) {

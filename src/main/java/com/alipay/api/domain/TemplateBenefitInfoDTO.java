@@ -42,6 +42,7 @@ public class TemplateBenefitInfoDTO implements Serializable {
     @ApiModelProperty(notes = " 权益结束时间")
     @JSONField(alternateNames = "endDate", name = "end_date", format = "yyyy-MM-dd HH:mm:ss")
     @NotNull
+    @EndDate(field = "startDate")
     private Date endDate;
 
     /**
@@ -49,7 +50,7 @@ public class TemplateBenefitInfoDTO implements Serializable {
      */
     @ApiModelProperty(notes = " 开始时间")
     @JSONField(alternateNames = "startDate", name = "start_date", format = "yyyy-MM-dd HH:mm:ss")
-    @EndDate(field = "endDate")
+    @NotNull
     private Date startDate;
 
 

@@ -7,6 +7,7 @@ import com.alibaba.fastjson.annotation.*;
 import com.alipay.api.AlipayObject;
 import com.alipay.api.internal.mapping.ApiField;
 import com.alipay.api.internal.mapping.ApiListField;
+import com.yazuo.xiaoya.common.annotation.validate.RGBColor;
 import io.swagger.annotations.*;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
@@ -45,7 +46,7 @@ public class TemplateStyleInfoDTO implements Serializable {
      * 卡片颜色
      */
     @ApiModelProperty(notes = " 卡片颜色")
-    @Length(min = 1,max = 64)
+    @RGBColor
     private String color;
 
     /**
@@ -65,7 +66,7 @@ public class TemplateStyleInfoDTO implements Serializable {
      */
     @ApiModelProperty(notes = " 背景色")
     @JSONField(alternateNames = "bgColor", name = "bg_color")
-    @Length(min = 1,max = 32)
+    @RGBColor
     private String bgColor;
 
 
