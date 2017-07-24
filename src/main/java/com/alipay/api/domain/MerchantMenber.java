@@ -2,9 +2,10 @@ package com.alipay.api.domain;
 
 import com.alibaba.fastjson.annotation.*;
 import com.alipay.api.AlipayObject;
-import com.alipay.api.internal.mapping.ApiField;
 import com.yazuo.xiaoya.common.annotation.validate.EnumCheck;
 import io.swagger.annotations.*;
+
+import java.util.Date;
 
 /**
  * 商户会员
@@ -22,7 +23,7 @@ public class MerchantMenber extends AlipayObject {
      */
     @ApiModelProperty(notes = " 生日 yyyy-MM-dd")
     @JSONField(alternateNames = "birth", name = "birth", format = "yyyy-MM-dd")
-    private Data birth;
+    private Date birth;
 
     /**
      * 手机号
@@ -43,11 +44,11 @@ public class MerchantMenber extends AlipayObject {
     @ApiModelProperty(notes = " 姓名")
     private String name;
 
-    public Data getBirth() {
+    public Date getBirth() {
         return birth;
     }
 
-    public void setBirth(Data birth) {
+    public void setBirth(Date birth) {
         this.birth = birth;
     }
 
