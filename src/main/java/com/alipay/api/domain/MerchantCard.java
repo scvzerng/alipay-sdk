@@ -86,6 +86,13 @@ public class MerchantCard extends AlipayObject {
     @JSONField(alternateNames = "validDate", name = "valid_date",format = "yyyy-MM-dd HH:mm:ss")
     @NotNull
     private Date validDate;
+    /**
+     * 商户动态码回传信息：
+     * 只用于当write_off_type核销类型为mdbarcode或mdqrcode时，商户调用卡更新接口回传动态码。
+     */
+    @ApiModelProperty(notes = " 商户动态码回传信息")
+    @JSONField(alternateNames = "mdcodeInfo", name = "mdcode_info")
+    private MdCodeInfoDTO mdcodeInfo;
 
     public BigDecimal getBalance() {
         return balance;
@@ -149,5 +156,13 @@ public class MerchantCard extends AlipayObject {
 
     public void setValidDate(Date validDate) {
         this.validDate = validDate;
+    }
+
+    public MdCodeInfoDTO getMdcodeInfo() {
+        return mdcodeInfo;
+    }
+
+    public void setMdcodeInfo(MdCodeInfoDTO mdcodeInfo) {
+        this.mdcodeInfo = mdcodeInfo;
     }
 }
