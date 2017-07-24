@@ -45,7 +45,6 @@ public class McardNotifyMessage extends AlipayObject {
     @ApiModelProperty(notes = " 消息类型，每种消息都定义了固定消息模板，POINT_UPDATE：积分变更消息BALANCE_UPDATE：余额变更消息LEVEL_UPDATE：等级变更消息")
     @JSONField(alternateNames = "messageType", name = "message_type")
     @NotNull
-    @EnumCheck(enums = {"POINT_UPDATE","BALANCE_UPDATE","LEVEL_UPDATE" })
     private String messageType;
 
     public String getChangeReason() {
