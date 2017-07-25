@@ -1,5 +1,6 @@
 package com.alipay.api.domain;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -16,7 +17,7 @@ import io.swagger.annotations.*;
  * @since 1.0, 2017-04-01 21:21:04
  */
 @ApiModel(description = " 活动限制信息")
-public class ConstraintInfo{
+public class ConstraintInfo implements Serializable {
 
     /**
      * 人群规则组ID

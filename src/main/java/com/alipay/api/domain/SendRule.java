@@ -5,6 +5,7 @@ import com.alipay.api.AlipayObject;
 import com.alipay.api.internal.mapping.ApiField;
 import io.swagger.annotations.*;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 /**
@@ -14,7 +15,7 @@ import java.math.BigDecimal;
  * @since 1.0, 2017-04-01 21:21:04
  */
 @ApiModel(description = " 奖品发放规则")
-public class SendRule  {
+public class SendRule  implements Serializable {
 
 
     /**

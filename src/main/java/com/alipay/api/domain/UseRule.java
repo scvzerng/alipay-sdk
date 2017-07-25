@@ -1,5 +1,6 @@
 package com.alipay.api.domain;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -17,7 +18,7 @@ import io.swagger.annotations.*;
  * @since 1.0, 2017-04-01 21:21:04
  */
 @ApiModel(description = " 券的使用规则信息")
-public class UseRule {
+public class UseRule implements Serializable {
 
 
     /**

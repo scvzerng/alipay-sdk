@@ -1,5 +1,6 @@
 package com.alipay.api.domain;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
@@ -18,7 +19,7 @@ import io.swagger.annotations.*;
  * @since 1.0, 2017-04-01 21:21:04
  */
 @ApiModel(description = " 券对象")
-public class Voucher  {
+public class Voucher  implements Serializable {
 
 
     /**
@@ -68,7 +69,7 @@ public class Voucher  {
      */
     @ApiModelProperty(notes = " 券是否可转赠，默认为可转赠")
     @JSONField(name = "donate_flag", alternateNames = "donateFlag")
-    private boolean donateFlag = false;
+    private boolean donateFlag ;
 
     /**
      * 券生效的方式，目前支持以下方式

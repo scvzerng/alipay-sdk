@@ -5,6 +5,8 @@ import com.alipay.api.AlipayObject;
 import com.alipay.api.internal.mapping.ApiField;
 import io.swagger.annotations.*;
 
+import java.io.Serializable;
+
 /**
  * 券可用时间
  *
@@ -12,9 +14,8 @@ import io.swagger.annotations.*;
  * @since 1.0, 2017-04-01 21:21:04
  */
 @ApiModel(description = " 券可用时间")
-public class UseTime extends AlipayObject {
+public class UseTime implements Serializable {
 
-    private static final long serialVersionUID = 3662467616474731679L;
 
     /**
      * 券可用时段时间维度，目前支持周(W)

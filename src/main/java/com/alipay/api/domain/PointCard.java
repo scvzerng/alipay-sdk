@@ -1,5 +1,6 @@
 package com.alipay.api.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import com.alibaba.fastjson.annotation.*;
@@ -14,7 +15,7 @@ import io.swagger.annotations.*;
  * @since 1.0, 2017-04-01 21:21:04
  */
 @ApiModel(description = " 集点卡工具")
-public class PointCard {
+public class PointCard implements Serializable {
 
 
     /**

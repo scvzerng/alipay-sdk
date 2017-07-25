@@ -5,6 +5,8 @@ import com.alipay.api.AlipayObject;
 import com.alipay.api.internal.mapping.ApiField;
 import io.swagger.annotations.*;
 
+import java.io.Serializable;
+
 /**
  * 营销工具
  *
@@ -12,7 +14,7 @@ import io.swagger.annotations.*;
  * @since 1.0, 2017-04-01 21:21:04
  */
 @ApiModel(description = " 营销工具")
-public class PromoTool {
+public class PromoTool implements Serializable {
 
 
     /**

@@ -5,6 +5,8 @@ import com.alipay.api.AlipayObject;
 import com.alipay.api.internal.mapping.ApiField;
 import io.swagger.annotations.*;
 
+import java.io.Serializable;
+
 /**
  * 预算信息
  *
@@ -12,7 +14,7 @@ import io.swagger.annotations.*;
  * @since 1.0, 2017-04-01 21:21:04
  */
 @ApiModel(description = " 预算信息")
-public class BudgetInfo  {
+public class BudgetInfo  implements Serializable{
 
 
     /**

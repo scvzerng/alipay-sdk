@@ -1,5 +1,6 @@
 package com.alipay.api.domain;
 
+import java.io.Serializable;
 import java.util.List;
 
 import com.alibaba.fastjson.annotation.*;
@@ -13,19 +14,21 @@ import io.swagger.annotations.*;
  *
  * @author auto create
  * @since 1.0, 2017-04-01 21:21:04
- */@ApiModel(description = " 券的说明条款")
-public class ClauseTerm extends AlipayObject {
+ */
+@ApiModel(description = " 券的说明条款")
+public class ClauseTerm implements Serializable {
 
-    private static final long serialVersionUID = 1494981959284633896L;
 
     /**
      * 说明描述内容
-     */@ApiModelProperty(notes = " 说明描述内容")
+     */
+    @ApiModelProperty(notes = " 说明描述内容")
     private List<String> descriptions;
 
     /**
      * 说明title
-     */@ApiModelProperty(notes = " 说明title")
+     */
+    @ApiModelProperty(notes = " 说明title")
     private String title;
 
     public List<String> getDescriptions() {
