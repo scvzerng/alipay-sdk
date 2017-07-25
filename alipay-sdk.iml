@@ -27,7 +27,7 @@
     <orderEntry type="library" name="Maven: javax.el:javax.el-api:2.2.4" level="project" />
     <orderEntry type="library" name="Maven: junit:junit:4.12" level="project" />
     <orderEntry type="library" name="Maven: org.hamcrest:hamcrest-core:1.3" level="project" />
-    <orderEntry type="library" name="Maven: com.yazuo.xiaoya:vo:0.0.4-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: com.yazuo.xiaoya:vo:0.0.5-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: com.yazuo.xiaoya:exception:0.0.4-SNAPSHOT" level="project" />
   </component>
 </module>
