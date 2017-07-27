@@ -241,6 +241,7 @@ public class DefaultAlipayClient implements AlipayClient {
             if (request.getClass().getMethod("getBizContent") != null
                 && StringUtils.isEmpty(appParams.get(AlipayConstants.BIZ_CONTENT_KEY))
                 && request.getBizModel() != null) {
+                request.getBizModel().setIdentity(null);
                 appParams.put(AlipayConstants.BIZ_CONTENT_KEY,
                     JSONWriter.write(request.getBizModel(),features));
             }
