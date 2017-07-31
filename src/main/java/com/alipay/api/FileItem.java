@@ -16,18 +16,27 @@ public class FileItem implements Serializable {
 
 	@NotNull
 	private String fileName;
+	@NotNull
 	private String mimeType;
 	@NotNull
 	private byte[] content;
-	private File file;
+	private  File file;
 
-    /**
+	public FileItem() {
+
+	}
+
+	/**
      * 基于本地文件的构造器。
      * 
      * @param file 本地文件
      */
-	public FileItem(File file) {
+	public FileItem(File file) throws IOException {
 		this.file = file;
+		this.fileName =this.getFileName();
+	    this.content = this.getContent();
+	    this.mimeType = this.getSuffix();
+
 	}
 
     /**
@@ -35,7 +44,7 @@ public class FileItem implements Serializable {
      * 
      * @param filePath 文件绝对路径
      */
-	public FileItem(String filePath) {
+	public FileItem(String filePath) throws IOException {
 		this(new File(filePath));
 	}
 
@@ -72,6 +81,13 @@ public class FileItem implements Serializable {
 	public String getMimeType() throws IOException {
 		if (this.mimeType == null) {
 			this.mimeType = AlipayUtils.getMimeType(getContent());
+		}
+		return this.mimeType;
+	}
+
+	public String getSuffix() throws IOException {
+		if(this.mimeType==null){
+			this.mimeType = AlipayUtils.getFileSuffix(getContent());
 		}
 		return this.mimeType;
 	}
