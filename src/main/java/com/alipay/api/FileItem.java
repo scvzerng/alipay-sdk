@@ -1,12 +1,10 @@
 package com.alipay.api;
 
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 
 import com.alipay.api.internal.util.AlipayUtils;
+
+import javax.validation.constraints.NotNull;
 
 /**
  * 文件元数据。
@@ -14,10 +12,12 @@ import com.alipay.api.internal.util.AlipayUtils;
  * @author carver.gu
  * @since 1.0, Sep 12, 2009
  */
-public class FileItem {
+public class FileItem implements Serializable {
 
+	@NotNull
 	private String fileName;
 	private String mimeType;
+	@NotNull
 	private byte[] content;
 	private File file;
 
