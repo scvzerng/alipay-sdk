@@ -2,9 +2,8 @@ package com.alipay.api.fastjson;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
+import com.alibaba.fastjson.serializer.ValueFilter;
 import com.alipay.api.*;
-import com.alipay.api.fastjson.FastJSONAlipayClient;
-import com.alipay.api.internal.parser.json.ObjectJsonParser;
 import com.alipay.api.internal.parser.xml.ObjectXmlParser;
 import com.alipay.api.internal.util.*;
 
@@ -91,114 +90,18 @@ public class DefaultFastJSONAlipayClient implements FastJSONAlipayClient {
 
     @Override
     public <T extends AlipayResponse> T execute(AlipayRequest<T> request, SerializerFeature... features) throws AlipayApiException {
-        AlipayParser<T> parser = null;
-        if (AlipayConstants.FORMAT_XML.equals(this.format)) {
-            parser = new ObjectXmlParser<T>(request.getResponseClass());
-        } else {
-            parser = new FastJSONParser<T>(request.getResponseClass());
-        }
-
-        return _execute(request, parser);
+        return _execute(request, new FastJSONParser<T>(request.getResponseClass()));
     }
 
 
 
-    public <T extends AlipayResponse> T pageExecute(AlipayRequest<T> request) throws AlipayApiException {
-        return pageExecute(request, "POST");
-    }
 
-    public <T extends AlipayResponse> T pageExecute(AlipayRequest<T> request,
-                                                    String httpMethod) throws AlipayApiException {
-        RequestParametersHolder requestHolder = getRequestHolderWithSign(request);
-        // 打印完整请求报文
-        if (AlipayLogger.isBizDebugEnabled()) {
-            AlipayLogger.logBizDebug(getRedirectUrl(requestHolder));
-        }
-        T rsp = null;
-        try {
-            Class<T> clazz = request.getResponseClass();
-            rsp = clazz.newInstance();
-        } catch (InstantiationException e) {
-            AlipayLogger.logBizError(e);
-        } catch (IllegalAccessException e) {
-            AlipayLogger.logBizError(e);
-        }
-        if ("GET".equalsIgnoreCase(httpMethod)) {
-            rsp.setBody(getRedirectUrl(requestHolder));
-        } else {
-            String baseUrl = getRequestUrl(requestHolder);
-            rsp.setBody(WebUtils.buildForm(baseUrl, requestHolder.getApplicationParams()));
-        }
-        return rsp;
-    }
 
-    public <T extends AlipayResponse> T sdkExecute(AlipayRequest<T> request) throws AlipayApiException {
-        RequestParametersHolder requestHolder = getRequestHolderWithSign(request);
-        // 打印完整请求报文
-        if (AlipayLogger.isBizDebugEnabled()) {
-            AlipayLogger.logBizDebug(getSdkParams(requestHolder));
-        }
-        T rsp = null;
-        try {
-            Class<T> clazz = request.getResponseClass();
-            rsp = clazz.newInstance();
-        } catch (InstantiationException e) {
-            AlipayLogger.logBizError(e);
-        } catch (IllegalAccessException e) {
-            AlipayLogger.logBizError(e);
-        }
-        rsp.setBody(getSdkParams(requestHolder));
-        return rsp;
-    }
-
-    public <TR extends AlipayResponse, T extends AlipayRequest<TR>> TR parseAppSyncResult(Map<String, String> result,
-                                                                                          Class<T> requsetClazz) throws AlipayApiException {
-        TR tRsp = null;
-        String rsp = result.get("result");
-
-        try {
-            T request = requsetClazz.newInstance();
-            Class<TR> responseClazz = request.getResponseClass();
-
-            //result为空直接返回SYSTEM_ERROR
-            if (StringUtils.isEmpty(rsp)) {
-                tRsp = responseClazz.newInstance();
-                tRsp.setCode("20000");
-                tRsp.setSubCode("ACQ.SYSTEM_ERROR");
-                tRsp.setSubMsg(result.get("memo"));
-            } else {
-                AlipayParser<TR> parser = null;
-                if (AlipayConstants.FORMAT_XML.equals(this.format)) {
-                    parser = new ObjectXmlParser<TR>(responseClazz);
-                } else {
-                    parser = new ObjectJsonParser<TR>(responseClazz);
-                }
-
-                // 解析实际串
-                tRsp = parser.parse(rsp);
-                tRsp.setBody(rsp);
-
-                // 验签是对请求返回原始串
-                checkResponseSign(request, parser, rsp, tRsp.isSuccess());
-                if (!tRsp.isSuccess()) {
-                    AlipayLogger.logBizError(rsp);
-                }
-            }
-        } catch (RuntimeException e) {
-            AlipayLogger.logBizError(rsp);
-            throw e;
-        } catch (AlipayApiException e) {
-            AlipayLogger.logBizError(rsp);
-            throw new AlipayApiException(e);
-        } catch (InstantiationException e) {
-            AlipayLogger.logBizError(rsp);
-            throw new AlipayApiException(e);
-        } catch (IllegalAccessException e) {
-            AlipayLogger.logBizError(rsp);
-            throw new AlipayApiException(e);
-        }
-        return tRsp;
-    }
+  private void clearIdentity(AlipayRequest<?> request){
+      if(request.getBizModel()!=null) {
+          request.getBizModel().setIdentity(null);
+      }
+  }
 
     /**
      * 组装接口参数，处理加密、签名逻辑
@@ -207,20 +110,25 @@ public class DefaultFastJSONAlipayClient implements FastJSONAlipayClient {
      * @return
      * @throws AlipayApiException
      */
-    private <T extends AlipayResponse> RequestParametersHolder getRequestHolderWithSign(AlipayRequest<?> request) throws AlipayApiException {
-        if(request.getBizModel()!=null) {
-            request.getBizModel().setIdentity(null);
-        }
+    private <T extends AlipayResponse> RequestParametersHolder getRequestHolderWithSign(AlipayRequest<?> request,SerializerFeature...features) throws AlipayApiException {
+        clearIdentity(request);
         RequestParametersHolder requestHolder = new RequestParametersHolder();
         AlipayHashMap appParams = new AlipayHashMap(request.getTextParams());
 
         // 仅当API包含biz_content参数且值为空时，序列化bizModel填充bizContent
         try {
+
+
             if (request.getClass().getMethod("getBizContent") != null
                     && StringUtils.isEmpty(appParams.get(AlipayConstants.BIZ_CONTENT_KEY))
                     && request.getBizModel() != null) {
                 appParams.put(AlipayConstants.BIZ_CONTENT_KEY,
-                        JSON.toJSONString(request.getBizModel()));
+                        JSON.toJSONString(request.getBizModel(), new ValueFilter() {
+                            @Override
+                            public Object process(Object object, String name, Object value) {
+                                return value instanceof Number ?value.toString():value;
+                            }
+                        },features));
             }
         } catch (NoSuchMethodException e) {
             // 找不到getBizContent则什么都不做
@@ -351,25 +259,7 @@ public class DefaultFastJSONAlipayClient implements FastJSONAlipayClient {
         return urlSb.toString();
     }
 
-    /**
-     * 拼装sdk调用时所传参数
-     *
-     * @param requestHolder
-     * @return
-     * @throws AlipayApiException
-     */
-    private String getSdkParams(RequestParametersHolder requestHolder) throws AlipayApiException {
-        StringBuffer urlSb = new StringBuffer();
-        try {
-            Map<String, String> sortedMap = AlipaySignature.getSortedMap(requestHolder);
-            String sortedQuery = WebUtils.buildQuery(sortedMap, charset);
-            urlSb.append(sortedQuery);
-        } catch (IOException e) {
-            throw new AlipayApiException(e);
-        }
 
-        return urlSb.toString();
-    }
 
     private <T extends AlipayResponse> T _execute(AlipayRequest<T> request, AlipayParser<T> parser) throws AlipayApiException {
 
@@ -416,9 +306,9 @@ public class DefaultFastJSONAlipayClient implements FastJSONAlipayClient {
      * @return
      * @throws AlipayApiException
      */
-    private <T extends AlipayResponse> Map<String, Object> doPost(AlipayRequest<T> request) throws AlipayApiException {
+    private <T extends AlipayResponse> Map<String, Object> doPost(AlipayRequest<T> request,SerializerFeature... features) throws AlipayApiException {
         Map<String, Object> result = new HashMap<String, Object>();
-        RequestParametersHolder requestHolder = getRequestHolderWithSign(request);
+        RequestParametersHolder requestHolder = getRequestHolderWithSign(request,features);
 
         String url = getRequestUrl(requestHolder);
 
