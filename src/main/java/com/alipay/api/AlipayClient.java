@@ -4,8 +4,6 @@
  */
 package com.alipay.api;
 
-import com.alibaba.fastjson.serializer.SerializerFeature;
-
 import java.util.Map;
 
 /**
@@ -22,7 +20,7 @@ public interface AlipayClient {
      * @return
      * @throws AlipayApiException
      */
-    public <T extends AlipayResponse> T execute(AlipayRequest<T> request, SerializerFeature... features) throws AlipayApiException;
+    public <T extends AlipayResponse> T execute(AlipayRequest<T> request) throws AlipayApiException;
 
     /**
      * 
@@ -34,7 +32,7 @@ public interface AlipayClient {
      * @throws AlipayApiException
      */
     public <T extends AlipayResponse> T execute(AlipayRequest<T> request,
-                                                String authToken, SerializerFeature... features) throws AlipayApiException;
+                                                String authToken) throws AlipayApiException;
 
     /**
      * 
@@ -46,7 +44,7 @@ public interface AlipayClient {
      * @throws AlipayApiException
      */
     public <T extends AlipayResponse> T execute(AlipayRequest<T> request, String accessToken,
-                                                String appAuthToken, SerializerFeature... features) throws AlipayApiException;
+                                                String appAuthToken) throws AlipayApiException;
 
     /**
      * 
@@ -55,7 +53,7 @@ public interface AlipayClient {
      * @return
      * @throws AlipayApiException
      */
-    public <T extends AlipayResponse> T pageExecute(AlipayRequest<T> request, SerializerFeature... features) throws AlipayApiException;
+    public <T extends AlipayResponse> T pageExecute(AlipayRequest<T> request) throws AlipayApiException;
     
     /**
      * SDK客户端调用生成sdk字符串
@@ -64,7 +62,7 @@ public interface AlipayClient {
      * @return
      * @throws AlipayApiException
      */
-    public <T extends AlipayResponse> T sdkExecute(AlipayRequest<T> request, SerializerFeature... features) throws AlipayApiException;
+    public <T extends AlipayResponse> T sdkExecute(AlipayRequest<T> request) throws AlipayApiException;
 
     /**
     * 
@@ -73,7 +71,7 @@ public interface AlipayClient {
     * @throws AlipayApiException
     */
     public <T extends AlipayResponse> T pageExecute(AlipayRequest<T> request,
-                                                    String method, SerializerFeature... features) throws AlipayApiException;
+                                                    String method) throws AlipayApiException;
 
     /**
      * 移动客户端同步结果返回解析的参考工具方法

@@ -31,7 +31,7 @@ public class ObjectJsonParser<T extends AlipayResponse> implements AlipayParser<
     }
 
     /** 
-     * @see com.alipay.api.AlipayParser#getSignItem(com.alipay.api.AlipayRequest, String)
+     * @see AlipayParser#getSignItem(AlipayRequest, String)
      */
     public SignItem getSignItem(AlipayRequest<?> request, String responseBody)
                                                                               throws AlipayApiException {
@@ -42,7 +42,7 @@ public class ObjectJsonParser<T extends AlipayResponse> implements AlipayParser<
     }
 
     /** 
-     * @see com.alipay.api.AlipayParser#encryptSourceData(com.alipay.api.AlipayRequest, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)
+     * @see AlipayParser#encryptSourceData(AlipayRequest, String, String, String, String, String)
      */
     public String encryptSourceData(AlipayRequest<?> request, String body, String format,
                                        String encryptType, String encryptKey, String charset)
