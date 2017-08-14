@@ -3,6 +3,7 @@ package com.alipay.api;
 import java.io.*;
 
 import com.alipay.api.internal.util.AlipayUtils;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.validation.constraints.NotNull;
 
@@ -18,7 +19,7 @@ public class FileItem implements Serializable {
 	private String fileName;
 	@NotNull
 	private String mimeType;
-	@NotNull
+	@NotEmpty
 	private byte[] content;
 	private  File file;
 

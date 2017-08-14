@@ -34,12 +34,12 @@
         <dependency>
             <groupId>com.yazuo.xiaoya</groupId>
             <artifactId>enum</artifactId>
-            <version>1.0.8-SNAPSHOT</version>
+            <version>1.0.9-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>com.yazuo.xiaoya</groupId>
             <artifactId>annotations</artifactId>
-            <version>1.0.8-SNAPSHOT</version>
+            <version>1.0.9-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>commons-logging</groupId>
@@ -74,7 +74,7 @@
         <dependency>
             <groupId>com.yazuo.xiaoya</groupId>
             <artifactId>vo</artifactId>
-            <version>1.0.8-SNAPSHOT</version>
+            <version>1.0.9-SNAPSHOT</version>
         </dependency>
     </dependencies>
 

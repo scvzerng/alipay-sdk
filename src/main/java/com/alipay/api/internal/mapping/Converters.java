@@ -16,11 +16,13 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.TimeZone;
+import java.util.logging.Logger;
 
 import com.alipay.api.AlipayApiException;
 import com.alipay.api.AlipayConstants;
 import com.alipay.api.AlipayResponse;
 import com.alipay.api.internal.util.StringUtils;
+import org.apache.log4j.spi.LoggerFactory;
 
 /**
  * 转换工具类。
@@ -32,7 +34,7 @@ public class Converters {
     // 是否对JSON返回的数据类型进行校验，默认不校验。给内部测试JSON返回时用的开关。
     //规则：返回的"基本"类型只有String,Long,Boolean,Date,采取严格校验方式，如果类型不匹配，报错
     public static boolean            isCheckJsonType = false;
-
+    private static final Logger LOGGER = Logger.getLogger(Converters.class.getName());
     private static final Set<String> baseFields      = new HashSet<String>();
 
     private static final Set<String> excludeFields   = new HashSet<String>();
@@ -142,13 +144,18 @@ public class Converters {
                     }
 
                 } else {
+                    try {
+                        Field field = clazz.getDeclaredField(itemName);
+                        AlipayFieldMethod alipayFieldMethod = new AlipayFieldMethod();
+                        alipayFieldMethod.setField(field);
+                        alipayFieldMethod.setMethod(writeMethod);
+                        alipayFieldMethods.add(alipayFieldMethod);
+                    }catch (NoSuchFieldException e){
+                        LOGGER.warning(e.getMessage());
+                        continue;
+                    }
 
-                    Field field = clazz.getDeclaredField(itemName);
 
-                    AlipayFieldMethod alipayFieldMethod = new AlipayFieldMethod();
-                    alipayFieldMethod.setField(field);
-                    alipayFieldMethod.setMethod(writeMethod);
-                    alipayFieldMethods.add(alipayFieldMethod);
                 }
 
                 // 迭代设置属性

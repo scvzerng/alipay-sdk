@@ -21,7 +21,7 @@ public abstract class AlipayObject implements Serializable {
      */
     @NotNull(groups = {AppAuth.class})
     @JSONField(serialize = false)
-    private Identity identity;
+    protected Identity identity;
 
     public Identity getIdentity() {
         return identity;
