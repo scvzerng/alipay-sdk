@@ -31,8 +31,10 @@ public class FastJSONConverter implements Converter {
 
     public <T extends AlipayResponse> T toResponse(String rsp, Class<T> clazz)
             throws AlipayApiException {
-        JSONObject json = JSON.parseObject(new String(new NormalizerJSONString(rsp).getNormalizerData()));
-        for(Object value : json.values()){
+        NormalizerJSON normalizerJSON = clazz.getAnnotation(NormalizerJSON.class);
+        String json = normalizerJSON!=null&&!normalizerJSON.value()?rsp:new String(new NormalizerJSONString(rsp).getNormalizerData());
+        JSONObject jsonObject = JSON.parseObject(json);
+        for(Object value : jsonObject.values()){
             if(value instanceof JSON){
                 return JSON.toJavaObject((JSON) value,clazz);
             }
