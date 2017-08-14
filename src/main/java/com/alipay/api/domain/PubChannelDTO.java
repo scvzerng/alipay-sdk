@@ -30,15 +30,15 @@ public class PubChannelDTO implements Serializable {
      * 扩展信息，无需配置
      */
     @ApiModelProperty(notes = " 扩展信息，无需配置")
-    @JSONField(alternateNames = "extInfo", name = "ext_info",serializeUsing = StringValueSerializing.class)
+    @JSONField(alternateNames = "extInfo", name = "ext_info")
     @NotNull
-    private JSONObject extInfo;
+    private String extInfo;
 
-    public JSONObject getExtInfo() {
+    public String getExtInfo() {
         return extInfo;
     }
 
-    public void setExtInfo(JSONObject extInfo) {
+    public void setExtInfo(String extInfo) {
         this.extInfo = extInfo;
     }
 

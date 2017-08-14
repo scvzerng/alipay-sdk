@@ -1,5 +1,6 @@
 package com.alipay.api.domain;
 
+import com.alibaba.fastjson.annotation.*;
 import com.alipay.api.AlipayObject;
 import com.alipay.api.internal.mapping.ApiField;
 import io.swagger.annotations.*;
@@ -20,17 +21,17 @@ public class AlipayOpenServicemarketOrderQueryModel extends AlipayObject {
 	/**
 	 * 商户订单ID号
 	 */
+	@JSONField(alternateNames = "commodityOrderId", name = "commodity_order_id")
 	@ApiModelProperty(notes = " 商户订单ID号")
 	@NotNull(message = "商户订单id号不能为空")
-	@ApiField("commodity_order_id")
 	private String commodityOrderId;
 
 	/**
 	 * 从第几页开始查询
 	 */
+	@JSONField(alternateNames = "startPage", name = "start_page")
 	@ApiModelProperty(notes = " 从第几页开始查询")
 	@NotNull(message = "开始页不能为空")
-	@ApiField("start_page")
 	private Integer startPage;
 
 	public String getCommodityOrderId() {
