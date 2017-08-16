@@ -2,20 +2,21 @@ package com.alipay.api.domain;
 
 import com.alipay.api.AlipayObject;
 import com.alipay.api.internal.mapping.ApiField;
+import io.swagger.annotations.*;
 
 /**
  * 模板消息领取接口
  *
  * @author auto create
  * @since 1.0, 2016-12-02 16:32:06
- */
+ */@ApiModel(description = " 模板消息领取接口")
 public class AlipayOpenPublicTemplateMessageGetModel extends AlipayObject {
 
 	private static final long serialVersionUID = 5752696815344334991L;
 
 	/**
 	 * 消息母板id，登陆生活号后台(fuwu.alipay.com)，点击菜单“模板消息”，点击“模板库”，即可看到相应模板的消息母板id
-	 */
+	 */@ApiModelProperty(notes = " 消息母板id，登陆生活号后台(fuwu.alipay.com)，点击菜单“模板消息”，点击“模板库”，即可看到相应模板的消息母板id")
 	@ApiField("template_id")
 	private String templateId;
 
