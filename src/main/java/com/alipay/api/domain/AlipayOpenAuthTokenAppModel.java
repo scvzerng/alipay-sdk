@@ -2,6 +2,7 @@ package com.alipay.api.domain;
 
 import com.alibaba.fastjson.annotation.*;
 import com.alipay.api.AlipayObject;
+import com.alipay.api.fastjson.NormalizerJSON;
 import io.swagger.annotations.*;
 import org.hibernate.validator.constraints.Length;
 
