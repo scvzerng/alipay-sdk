@@ -1,5 +1,6 @@
 package com.alipay.api.response;
 
+import com.alipay.api.fastjson.NormalizerJSON;
 import com.alipay.api.internal.mapping.ApiField;
 
 import com.alipay.api.AlipayResponse;
@@ -10,6 +11,7 @@ import com.alipay.api.AlipayResponse;
  * @author auto create
  * @since 1.0, 2016-12-08 11:44:54
  */
+@NormalizerJSON(value = false)
 public class AlipayOpenPublicTemplateMessageGetResponse extends AlipayResponse {
 
     private static final long serialVersionUID = 8289721221645271687L;
